@@ -251,7 +251,7 @@
         <div>
 
             <div class="text-center mb-4 institute-header" style="margin-top: 40px">
-                <img src="images/mu.png" height="100" alt="Mu Logo" />
+                <img src="images/RGCMS.png" height="100" alt="Mu Logo" />
                 <h4 class="text-dark" style="color: #ccc; font-size: x-large">Institute of Management and Research</h4>
                 <h4 class="text-secondary" style="color: #ccc; font-size: x-large">Online Admission</h4>
             </div>
