@@ -6,6 +6,9 @@
 <head runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>IMR Online Admission</title>
+    <link href="<%= ResolveUrl("~/images/mu.png") %>" rel="icon" />
+    <link href="<%= ResolveUrl("~/images/mu.png") %>" rel="icon" />
+
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <%--<link href="Validation.css" rel="stylesheet" type="text/css" />--%>
 
@@ -290,196 +293,196 @@
                             </div>
 
                             <div class="panel-body">
-                                
 
 
-                                    <%--<div class="col-lg-4">--%>
-                                        <div class="panel panel-primary">
-                                            <div class="panel-heading">
-                                                <div class="form-inline">
-                                                    <div class="row">
-                                                        <%--<div class="col-lg-1"></div>--%>
-                                                        <div class="col-lg-12">
-                                                            <strong>
-                                                                <asp:Label ID="lblfirstname" runat="server" Style="font-family: Verdana; font-size: 15pt"></asp:Label></strong>
-                                                            <%--<asp:Label ID="lblsurname" runat="server" Font-Bold="True" Font-Names="Verdana" Font-Size="Medium" ForeColor="#3399FF" Width="267px"></asp:Label>--%>
-                                                            <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn btn-danger" OnClick="btnLogout_Click" Style="float:right">
+
+                                <%--<div class="col-lg-4">--%>
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <div class="form-inline">
+                                            <div class="row">
+                                                <%--<div class="col-lg-1"></div>--%>
+                                                <div class="col-lg-12">
+                                                    <strong>
+                                                        <asp:Label ID="lblfirstname" runat="server" Style="font-family: Verdana; font-size: 15pt"></asp:Label></strong>
+                                                    <%--<asp:Label ID="lblsurname" runat="server" Font-Bold="True" Font-Names="Verdana" Font-Size="Medium" ForeColor="#3399FF" Width="267px"></asp:Label>--%>
+                                                    <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn btn-danger" OnClick="btnLogout_Click" Style="float: right">
     <i class="glyphicon glyphicon-log-out"></i> Logout
-                                                        </asp:LinkButton>
-                                                        </div>
+                                                    </asp:LinkButton>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+
+                                        <div class="stepwizard">
+                                            <div class="stepwizard-row setup-panel">
+                                                <div class="stepwizard-step">
+                                                    <a id="basic" href="Basic_Detail.aspx" type="button" class="btn btn-primary btn-circle" runat="server">1</a>
+                                                    <p>Basic Details</p>
+                                                </div>
+                                                <div class="stepwizard-step">
+                                                    <a id="personal" href="Personal_Detail.aspx" type="button" class="btn btn-default btn-circle" disabled="disabled" runat="server">2</a>
+                                                    <p>Personal Details</p>
+                                                </div>
+                                                <div class="stepwizard-step">
+                                                    <a id="education" href="Education_Detail.aspx" type="button" class="btn btn-default btn-circle" disabled="disabled" runat="server">3</a>
+                                                    <p>Education Information</p>
+                                                </div>
+                                                <div class="stepwizard-step">
+                                                    <a id="family" href="Family_Detail.aspx" type="button" class="btn btn-default btn-circle" disabled="disabled" runat="server">4</a>
+                                                    <p>Family Information</p>
+                                                </div>
+                                                <div class="stepwizard-step">
+                                                    <a id="other" href="Other_Information.aspx" type="button" class="btn btn-default btn-circle" disabled="disabled" runat="server">5</a>
+                                                    <p>Other Information</p>
+                                                </div>
+                                                <div class="stepwizard-step">
+                                                    <a id="images" href="Document_upload.aspx" type="button" class="btn btn-default btn-circle" disabled="disabled" runat="server">6</a>
+                                                    <p>Upload Photo/Sign</p>
+                                                </div>
+                                                <div class="stepwizard-step">
+                                                    <a id="apply" href="Apply_Course.aspx" type="button" class="btn btn-default btn-circle" disabled="disabled" runat="server">7</a>
+                                                    <p>Apply Courses</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div style="display: none">
+                                            <div class="row" style="height: 30px">
+                                                <div class="row">
+                                                    <div class="col-lg-1">
+                                                    </div>
+                                                    <div class="col-lg-9">
+                                                        <div><span style="font-family: 'Times New Roman'; font-size: larger; font-weight: 700">Step 1:<strong style="font-family: 'Times New Roman'; font-size: large"><a href="Basic_Detail.aspx"> Basic Details </a></strong></span></div>
+                                                    </div>
+                                                    <div class="col-lg-2" runat="server" id="step1img">
+                                                        <a href="#">
+                                                            <span class="glyphicon glyphicon-ok"></span>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="panel-body">
-
-                                                <div class="stepwizard">
-                                                    <div class="stepwizard-row setup-panel">
-                                                        <div class="stepwizard-step">
-                                                            <a id="basic" href="Basic_Detail.aspx" type="button" class="btn btn-primary btn-circle" runat="server">1</a>
-                                                            <p>Basic Details</p>
-                                                        </div>
-                                                        <div class="stepwizard-step">
-                                                            <a id="personal" href="Personal_Detail.aspx" type="button" class="btn btn-default btn-circle" disabled="disabled" runat="server">2</a>
-                                                            <p>Personal Details</p>
-                                                        </div>
-                                                        <div class="stepwizard-step">
-                                                            <a id="education" href="Education_Detail.aspx" type="button" class="btn btn-default btn-circle" disabled="disabled" runat="server">3</a>
-                                                            <p>Education Information</p>
-                                                        </div>
-                                                        <div class="stepwizard-step">
-                                                            <a id="family" href="Family_Detail.aspx" type="button" class="btn btn-default btn-circle" disabled="disabled" runat="server">4</a>
-                                                            <p>Family Information</p>
-                                                        </div>
-                                                        <div class="stepwizard-step">
-                                                            <a id="other" href="Other_Information.aspx" type="button" class="btn btn-default btn-circle" disabled="disabled" runat="server">5</a>
-                                                            <p>Other Information</p>
-                                                        </div>
-                                                        <div class="stepwizard-step">
-                                                            <a id="images" href="Document_upload.aspx" type="button" class="btn btn-default btn-circle" disabled="disabled" runat="server">6</a>
-                                                            <p>Upload Photo/Sign</p>
-                                                        </div>
-                                                        <div class="stepwizard-step">
-                                                            <a id="apply" href="Apply_Course.aspx" type="button" class="btn btn-default btn-circle" disabled="disabled" runat="server">7</a>
-                                                            <p>Apply Courses</p>
-                                                        </div>
+                                            <hr />
+                                            <div class="row" style="height: 30px">
+                                                <div class="row">
+                                                    <div class="col-lg-1">
                                                     </div>
-                                                </div>
-
-
-                                                <div style="display: none">
-                                                    <div class="row" style="height: 30px">
-                                                        <div class="row">
-                                                            <div class="col-lg-1">
-                                                            </div>
-                                                            <div class="col-lg-9">
-                                                                <div><span style="font-family: 'Times New Roman'; font-size: larger; font-weight: 700">Step 1:<strong style="font-family: 'Times New Roman'; font-size: large"><a href="Basic_Detail.aspx"> Basic Details </a></strong></span></div>
-                                                            </div>
-                                                            <div class="col-lg-2" runat="server" id="step1img">
-                                                                <a href="#">
-                                                                    <span class="glyphicon glyphicon-ok"></span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
+                                                    <div class="col-lg-9">
+                                                        <div><span style="font-family: 'Times New Roman'; font-size: larger; font-weight: 700">Step 2:<strong style="font-family: 'Times New Roman'; font-size: large"><a href="Personal_Detail.aspx">Personal Details</a></strong></span></div>
                                                     </div>
-                                                    <hr />
-                                                    <div class="row" style="height: 30px">
-                                                        <div class="row">
-                                                            <div class="col-lg-1">
-                                                            </div>
-                                                            <div class="col-lg-9">
-                                                                <div><span style="font-family: 'Times New Roman'; font-size: larger; font-weight: 700">Step 2:<strong style="font-family: 'Times New Roman'; font-size: large"><a href="Personal_Detail.aspx">Personal Details</a></strong></span></div>
-                                                            </div>
-                                                            <div class="col-lg-2" runat="server" id="step2img">
-                                                                <a href="#">
-                                                                    <span class="glyphicon glyphicon-ok"></span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr />
-                                                    <div class="row" style="height: 30px">
-                                                        <div class="row">
-                                                            <div class="col-lg-1">
-                                                            </div>
-                                                            <div class="col-lg-9">
-                                                                <div><span style="font-family: 'Times New Roman'; font-size: larger; font-weight: 700">Step 3:<strong style="font-family: 'Times New Roman'; font-size: large"><a href="Education_Detail.aspx"> Education Information</a></strong></span></div>
-                                                            </div>
-                                                            <div class="col-lg-2" runat="server" id="step3img">
-                                                                <a href="#">
-                                                                    <span class="glyphicon glyphicon-ok"></span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr />
-                                                    <div class="row" style="height: 30px">
-                                                        <div class="row">
-                                                            <div class="col-lg-1">
-                                                            </div>
-                                                            <div class="col-lg-9">
-                                                                <div><span style="font-family: 'Times New Roman'; font-size: larger; font-weight: 700">Step 4:<strong style="font-family: 'Times New Roman'; font-size: large"><a href="Family_Detail.aspx"> Family Information</a></strong></span></div>
-                                                            </div>
-                                                            <div class="col-lg-2" runat="server" id="step4img">
-                                                                <a href="#">
-                                                                    <span class="glyphicon glyphicon-ok"></span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr />
-                                                    <div class="row" style="height: 30px">
-                                                        <div class="row">
-                                                            <div class="col-lg-1">
-                                                            </div>
-                                                            <div class="col-lg-9">
-                                                                <div><span style="font-family: 'Times New Roman'; font-size: larger; font-weight: 700">Step 5:<strong style="font-family: 'Times New Roman'; font-size: large"><a href="Other_Information.aspx"> Other Information</a></strong></span></div>
-                                                            </div>
-                                                            <div class="col-lg-2" runat="server" id="step5img">
-                                                                <a href="#">
-                                                                    <span class="glyphicon glyphicon-ok"></span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr />
-                                                    <div class="row" style="height: 30px">
-                                                        <div class="row">
-                                                            <div class="col-lg-1">
-                                                            </div>
-                                                            <div class="col-lg-9">
-                                                                <div><span style="font-family: 'Times New Roman'; font-size: larger; font-weight: 700">Step 6:<strong style="font-family: 'Times New Roman'; font-size: large"><a href="Document_upload.aspx"> Upload Photo/Sign</a></strong></span></div>
-                                                            </div>
-                                                            <div class="col-lg-2" runat="server" id="step6img">
-                                                                <a href="#">
-                                                                    <span class="glyphicon glyphicon-ok"></span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr />
-                                                    <div class="row" style="height: 30px">
-                                                        <div class="row">
-                                                            <div class="col-lg-1">
-                                                            </div>
-                                                            <div class="col-lg-9">
-                                                                <div><span style="font-family: 'Times New Roman'; font-size: larger; font-weight: 700">Step 7:<strong style="font-family: 'Times New Roman'; font-size: large"><a href="Apply_Course.aspx"> Apply Courses </a></strong></span></div>
-                                                            </div>
-                                                            <div class="col-lg-2" runat="server" id="step7img">
-                                                                <a href="#">
-                                                                    <span class="glyphicon glyphicon-ok"></span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr />
-                                                    <div class="row" style="height: 30px">
-                                                        <div class="row">
-                                                            <div class="form-inline">
-                                                                <div class="col-lg-2">
-                                                                </div>
-                                                                <div class="col-lg-1">
-
-                                                                    <span class="glyphicon glyphicon-off"></span>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <span style="font-family: 'Times New Roman'; font-size: larger; font-weight: 700; color: red"><strong style="font-family: 'Times New Roman'; font-size: large"><a href="Login.aspx" style="color: red">Log Out</a></strong></span>
-
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
+                                                    <div class="col-lg-2" runat="server" id="step2img">
+                                                        <a href="#">
+                                                            <span class="glyphicon glyphicon-ok"></span>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="panel-footer">
-                                                <div class="hidden-lg hidden-md hidden-xs hidden-sm">
-                                                    <div class="row" style="height: 30px">
-                                                        <center>
+                                            <hr />
+                                            <div class="row" style="height: 30px">
+                                                <div class="row">
+                                                    <div class="col-lg-1">
+                                                    </div>
+                                                    <div class="col-lg-9">
+                                                        <div><span style="font-family: 'Times New Roman'; font-size: larger; font-weight: 700">Step 3:<strong style="font-family: 'Times New Roman'; font-size: large"><a href="Education_Detail.aspx"> Education Information</a></strong></span></div>
+                                                    </div>
+                                                    <div class="col-lg-2" runat="server" id="step3img">
+                                                        <a href="#">
+                                                            <span class="glyphicon glyphicon-ok"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row" style="height: 30px">
+                                                <div class="row">
+                                                    <div class="col-lg-1">
+                                                    </div>
+                                                    <div class="col-lg-9">
+                                                        <div><span style="font-family: 'Times New Roman'; font-size: larger; font-weight: 700">Step 4:<strong style="font-family: 'Times New Roman'; font-size: large"><a href="Family_Detail.aspx"> Family Information</a></strong></span></div>
+                                                    </div>
+                                                    <div class="col-lg-2" runat="server" id="step4img">
+                                                        <a href="#">
+                                                            <span class="glyphicon glyphicon-ok"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row" style="height: 30px">
+                                                <div class="row">
+                                                    <div class="col-lg-1">
+                                                    </div>
+                                                    <div class="col-lg-9">
+                                                        <div><span style="font-family: 'Times New Roman'; font-size: larger; font-weight: 700">Step 5:<strong style="font-family: 'Times New Roman'; font-size: large"><a href="Other_Information.aspx"> Other Information</a></strong></span></div>
+                                                    </div>
+                                                    <div class="col-lg-2" runat="server" id="step5img">
+                                                        <a href="#">
+                                                            <span class="glyphicon glyphicon-ok"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row" style="height: 30px">
+                                                <div class="row">
+                                                    <div class="col-lg-1">
+                                                    </div>
+                                                    <div class="col-lg-9">
+                                                        <div><span style="font-family: 'Times New Roman'; font-size: larger; font-weight: 700">Step 6:<strong style="font-family: 'Times New Roman'; font-size: large"><a href="Document_upload.aspx"> Upload Photo/Sign</a></strong></span></div>
+                                                    </div>
+                                                    <div class="col-lg-2" runat="server" id="step6img">
+                                                        <a href="#">
+                                                            <span class="glyphicon glyphicon-ok"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row" style="height: 30px">
+                                                <div class="row">
+                                                    <div class="col-lg-1">
+                                                    </div>
+                                                    <div class="col-lg-9">
+                                                        <div><span style="font-family: 'Times New Roman'; font-size: larger; font-weight: 700">Step 7:<strong style="font-family: 'Times New Roman'; font-size: large"><a href="Apply_Course.aspx"> Apply Courses </a></strong></span></div>
+                                                    </div>
+                                                    <div class="col-lg-2" runat="server" id="step7img">
+                                                        <a href="#">
+                                                            <span class="glyphicon glyphicon-ok"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row" style="height: 30px">
+                                                <div class="row">
+                                                    <div class="form-inline">
+                                                        <div class="col-lg-2">
+                                                        </div>
+                                                        <div class="col-lg-1">
+
+                                                            <span class="glyphicon glyphicon-off"></span>
+                                                        </div>
+                                                        <div class="col-lg-7">
                                                             <span style="font-family: 'Times New Roman'; font-size: larger; font-weight: 700; color: red"><strong style="font-family: 'Times New Roman'; font-size: large"><a href="Login.aspx" style="color: red">Log Out</a></strong></span>
-                                                        </center>
+
+                                                        </div>
                                                     </div>
+
                                                 </div>
-                                                <%--  <div class="row" style="height: 30px">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <div class="hidden-lg hidden-md hidden-xs hidden-sm">
+                                            <div class="row" style="height: 30px">
+                                                <center>
+                                                    <span style="font-family: 'Times New Roman'; font-size: larger; font-weight: 700; color: red"><strong style="font-family: 'Times New Roman'; font-size: large"><a href="Login.aspx" style="color: red">Log Out</a></strong></span>
+                                                </center>
+                                            </div>
+                                        </div>
+                                        <%--  <div class="row" style="height: 30px">
                                                     <div>
                                                         <center>
                                                         <span style="font-size: large">
@@ -488,26 +491,26 @@
                                                              </center>
                                                     </div>
                                                 </div>--%>
-                                            </div>
-                                        </div>
+                                    </div>
+                                </div>
 
-                                    <%--</div>--%>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div>
-                                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                                                </asp:ContentPlaceHolder>
+                                <%--</div>--%>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div>
+                                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                            </asp:ContentPlaceHolder>
 
-                                            </div>
                                         </div>
                                     </div>
-                                
+                                </div>
+
                             </div>
 
                             <div>
                                 <center>
                                     <div>
-                                        Design and Maintained by <a href="http://www.vssdevelopers.com" style="text-decoration: none">VIVA Software Solutions.</a>
+                                        <%-- Design and Maintained by <a href="http://www.vssdevelopers.com" style="text-decoration: none">VIVA Software Solutions.</a>--%>
                                     </div>
                                 </center>
                             </div>

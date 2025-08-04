@@ -4,8 +4,10 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Online Admission</title>
+    <link href="<%= ResolveUrl("~/images/mu.png") %>" rel="icon" />
+    <link href="<%= ResolveUrl("~/images/mu.png") %>" rel="icon" />
 
 
     <link rel="stylesheet" type="text/css" href="DatePicker/bootstrap.css" />
@@ -541,7 +543,7 @@
                                                             <div class="row">
                                                                 <div class="col-lg-6 col-sm-6">
                                                                     <div class="form-group">
-                                                                        <input runat="server" id="txtEmailID" class="form-control" placeholder="Email Address" tabindex="12"  maxlength="40" />
+                                                                        <input runat="server" id="txtEmailID" class="form-control" placeholder="Email Address" tabindex="12" maxlength="40" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-6 col-sm-6">
@@ -620,9 +622,9 @@
         </div>
         <div class="panel-footer" style="display: none">
             <center>
-                <div class="well">
+                <%--<div class="well">
                     Design and Maintained by <a href="http://www.vssdevelopers.com" style="text-decoration: none">VIVA Software Solutions.</a>
-                </div>
+                </div>--%>
             </center>
         </div>
     </form>
@@ -635,7 +637,7 @@
     </style>
     <script>
 
-    </script>
+</script>
     <script>
         function disableAndSubmit(btn) {
             // Change text and style

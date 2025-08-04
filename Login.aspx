@@ -3,17 +3,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Online Admission</title>
+<link href="<%= ResolveUrl("~/images/mu.png") %>" rel="icon" />
+<link href="<%= ResolveUrl("~/images/mu.png") %>" rel="icon" />
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <script type="text/javascript">
     function validate() {
         if (document.getElementById("<%=txtUserid.ClientID%>").value == "") {
-                 alert("Please Enter User ID");
-                 document.getElementById("<%=txtUserid.ClientID%>").focus();
-                 return false;
-             }
-             if (document.getElementById("<%=txtPasswd.ClientID%>").value == "") {
-                 alert("Please Enter Password");
-                 document.getElementById("<%=txtPasswd.ClientID%>").focus();
+            alert("Please Enter User ID");
+            document.getElementById("<%=txtUserid.ClientID%>").focus();
+            return false;
+        }
+        if (document.getElementById("<%=txtPasswd.ClientID%>").value == "") {
+            alert("Please Enter Password");
+            document.getElementById("<%=txtPasswd.ClientID%>").focus();
             return false;
         }
         return true;
@@ -48,7 +50,7 @@
 
 
     <div class="container vh-100 d-flex flex-column justify-content-center align-items-center" style="margin-top: 110px">
-    <div class="text-center mb-4 institute-header">
+        <div class="text-center mb-4 institute-header">
             <img src="images/mu.png" height="100" alt="Mu Logo">
             <h4 class="text-dark" style="color: #ccc; font-size: x-large">Institute of Management and Research</h4>
             <h4 class="text-secondary" style="color: #ccc; font-size: x-large">Applicant Portal</h4>
@@ -61,7 +63,7 @@
             <div class="col-md-6 col-lg-4">
                 <h3 class="text-center mb-4" style="color: #ccc; font-size: 45px; font-family: 'Source Sans 3'; margin-bottom: 24px"><strong>Login</strong></h3>
                 <div class="mb-3 form-group">
-                    <a title="Click here for Registration!" href="Register.aspx" style="text-decoration: none;color: #ccc;text-decoration: underline;display: flex;justify-content: center;" tabindex="4">Click here for Registration!</a>
+                    <a title="Click here for Registration!" href="Register.aspx" style="text-decoration: none; color: #ccc; text-decoration: underline; display: flex; justify-content: center;" tabindex="4">Click here for Registration!</a>
                 </div>
                 <div class="mb-3 form-group">
                     <input id="txtUserid" runat="server" type="text" class="form-control" placeholder="Username" />
@@ -74,11 +76,11 @@
                 </div>
                 <div class="text-right" style="margin-bottom: 10px">
                 </div>
-                <asp:Button ID="btnLogin" runat="server" Text="Login" class="btn btn-lg btn-primary btn-block form-group" OnClick="btnLogin_Click" style="background-color: #1a5d8c; color: white;border:none"></asp:Button>
+                <asp:Button ID="btnLogin" runat="server" Text="Login" class="btn btn-lg btn-primary btn-block form-group" OnClick="btnLogin_Click" style="background-color: #1a5d8c; color: white; border: none"></asp:Button>
 
             </div>
         </div>
-        </div>
+    </div>
 
     <%--<div class="panel-default">
         <div class="panel-heading">
