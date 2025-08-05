@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>IMR Online Admission</title>
+    <title>RGCMS|ADMISSION</title>
     <link href="<%= ResolveUrl("~/images/mu.png") %>" rel="icon" />
     <link href="<%= ResolveUrl("~/images/mu.png") %>" rel="icon" />
 
@@ -71,7 +71,6 @@
 
 
 
-    </script>
 
     <style type="text/css">
         body, input {

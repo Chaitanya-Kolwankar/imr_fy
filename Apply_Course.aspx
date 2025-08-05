@@ -184,7 +184,7 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Admission">
                                             <ItemTemplate>
-                                                <asp:Button ID="btn_confirm_add" runat="server" Text="Confirm Admission" CssClass="btn btn-primary" CommandName="Confirm"></asp:Button>
+                                                <asp:Button ID="btn_confirm_add" runat="server" Text="Provisional Admission" CssClass="btn btn-primary" CommandName="Confirm" Enabled='<%# !Convert.ToBoolean(Eval("flag")) %>'></asp:Button>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Form No">

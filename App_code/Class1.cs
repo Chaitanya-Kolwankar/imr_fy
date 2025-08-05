@@ -565,7 +565,7 @@ public class Class1
         DataTable dt;
         dt = fill_datatable("select max(ayid) as 'ayid' from dbo.m_academic");
 
-        ds1 = fill_dataset("select applicant_type,passwd from adm_applicant_registration where formno='" + id + "' and passwd='" + password + "' ");
+        ds1 = fill_dataset("select applicant_type,passwd from adm_applicant_registration where formno='" + id + "' and passwd='" + password + "' and Del_Flag=0");
 
 
         if (ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)

@@ -1,25 +1,12 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Web;
-using System.Web.Security;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
 
 
 public partial class FY_Apply_Course : System.Web.UI.Page
@@ -39,11 +26,15 @@ public partial class FY_Apply_Course : System.Web.UI.Page
                 }
                 else
                 {
-                    DataSet ds = cls.fill_dataset("  select distinct adm.formno+replace(adm.group_id,'GRP','') as formno_grp,pre_faculty,s.subcourse_name,c.course_name,g.Group_title ,adm.group_id from  dbo.d_adm_applicant app,  dbo.OLA_FY_adm_CourseSelection adm,dbo.m_crs_subcourse_tbl s,dbo.m_crs_course_tbl c,dbo.m_crs_subjectgroup_tbl g,m_FeeMaster as fm where app.Form_no=adm.formno and fm.group_id=(select group_id from m_crs_subjectgroup_tbl where group_id= adm.Group_id )  and app.ACDID=fm.Ayid and fm.del_flag='0' and adm.group_id=g.group_id   and c.course_id=s.course_id and g.Subcourse_id=s.subcourse_id and adm.group_id=g.group_id  and app.form_no='" + Session["Formno"].ToString() + "' and app.acdid='" + Session["AYID"].ToString() + "' and app.del_flag=0");
+                    string flag = "0";
+                    DataTable dt_chk_pay = cls.fill_datatable("select Formno from admProvFees where Formno='" + Session["Formno"].ToString() + "' and ayid='" + Session["AYID"].ToString() + "'");
+                    if (dt_chk_pay.Rows.Count != 0)
+                    {
+                        flag = "1";
+                    }
+                    DataSet ds = cls.fill_dataset("  select distinct adm.formno+replace(adm.group_id,'GRP','') as formno_grp,pre_faculty,s.subcourse_name,c.course_name,g.Group_title ,adm.group_id," + flag + " [flag] from  dbo.d_adm_applicant app,  dbo.OLA_FY_adm_CourseSelection adm,dbo.m_crs_subcourse_tbl s,dbo.m_crs_course_tbl c,dbo.m_crs_subjectgroup_tbl g,m_FeeMaster as fm where app.Form_no=adm.formno and fm.group_id=(select group_id from m_crs_subjectgroup_tbl where group_id= adm.Group_id )  and app.ACDID=fm.Ayid and fm.del_flag='0' and adm.group_id=g.group_id   and c.course_id=s.course_id and g.Subcourse_id=s.subcourse_id and adm.group_id=g.group_id  and app.form_no='" + Session["Formno"].ToString() + "' and app.acdid='" + Session["AYID"].ToString() + "' and app.del_flag=0");
                     if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                     {
-                        //chkIAgree.Checked = true;
-                        //chkIAgree.Enabled = false;
                         dgvData.DataSource = ds.Tables[0];
                         dgvData.DataBind();
                     }
@@ -63,8 +54,16 @@ public partial class FY_Apply_Course : System.Web.UI.Page
                         }
 
                     }
+                    dgvData.Visible = false;
+                    Session["group_id"] = ddl_course.SelectedValue.ToString();
+                    DataTable dt = cls.fill_datatable("select * from OLA_FY_adm_CourseSelection where formno='" + Session["Formno"].ToString() + "'and del_flag=0 and group_id='" + ddl_course.SelectedValue.ToString() + "'");
+                    string str = "";
+                    if (dt.Rows.Count > 0)
+                    {
+                        btnApply.Attributes["disabled"] = "disabled";
+                        dgvData.Visible = true;
+                    }
                 }
-                dgvData.Visible = false;
             }
             catch (Exception ex)
             {
@@ -201,17 +200,11 @@ public partial class FY_Apply_Course : System.Web.UI.Page
         {
             str = "insert into OLA_FY_adm_CourseSelection values('" + Session["Formno"].ToString() + "','" + ddl_course.SelectedValue.ToString() + "',null,null,0,null,GETDATE(),null,null,null,null,null);";
         }
-        str += "insert into OLA_Form_print values('" + Session["Formno"].ToString() + "',getdate()); update dbo.d_adm_applicant set step7_flag=1,step7_dt=getdate() where Form_no='" + Session["Formno"].ToString() + "' and ACDID='" + Session["AYID"].ToString() + "'";
-        SqlCommand cmd = new SqlCommand(str);
-        cmd.Connection = cls.con;
-        cls.Conn();
-        cmd.CommandType = CommandType.Text;
-        cmd.ExecuteNonQuery();
-        cls.con_close();
+
+        cls.DMLqueries(str);
         dgvData.Visible = true;
 
     }
-
 
     public void ErrorMessageDisplay(string ex)
     {
@@ -309,13 +302,13 @@ public partial class FY_Apply_Course : System.Web.UI.Page
                     { "phone", dt.Rows[0]["Mob_No"].ToString() },
                     { "order_id", txn_id },
                     { "amount", amount },
-                    { "description", "ADMISSION Year:" + curr_year[0] + main[main.Length - 1] },
+                    { "description", "Provisional Admission For Year " + curr_year[0] +"-"+ main[main.Length - 1] },
                     { "address_line_1", dt.Rows[0]["Address_line1"].ToString() },
                     { "address_line_2", dt.Rows[0]["Address_line2"].ToString() },
                     { "city", dt.Rows[0]["city"].ToString() },
                     { "state", dt.Rows[0]["State"].ToString() },
                     { "zip_code", dt.Rows[0]["pincode"].ToString() },
-                    { "udf1", status }
+                    { "udf1", status +"|"+ ddl_course.SelectedItem.Text},
                 };
 
                 // --- INITIATE PAYMENT ---

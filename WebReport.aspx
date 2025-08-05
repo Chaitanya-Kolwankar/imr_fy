@@ -174,7 +174,7 @@
                     <td style="text-align: center" class="auto-style9">
                         <%-- <img src="images/logo.gif" />--%>
                         <%--<img src="logo.gif" style="width: 115px; height: 109px" alt="" />--%>
-                        <img src="images/RJC.png" style="height: 90px" alt="" />
+                        <img src="images/RJC.png" style="height: 146px" alt="" />
                     </td>
 
                     <td style="text-align: center" class="auto-style9">
