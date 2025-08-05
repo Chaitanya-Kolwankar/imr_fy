@@ -246,7 +246,8 @@ public partial class Register : System.Web.UI.Page
                     {
                         Session["Formno"] = result;
                         Session["passwd"] = txtPasswd.Text;
-                        ErrorMessageDisplay("Your user id is: " + Session["Formno"].ToString() + " and password is: " + Session["Passwd"].ToString() + "");
+                        errorMessage.InnerHtml = "Your user id is: " + Session["Formno"].ToString() + " and password is: " + Session["Passwd"].ToString() + "";
+                        errorMessage.Visible = true;
                         errorMessage.Attributes["class"] = "row topMargin alert alert-success";
                         //For sending mail and msg--------------------------
                         //sendemail();
