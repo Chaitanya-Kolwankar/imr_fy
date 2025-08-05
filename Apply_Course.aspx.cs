@@ -198,7 +198,7 @@ public partial class FY_Apply_Course : System.Web.UI.Page
         }
         else
         {
-            str = "insert into OLA_FY_adm_CourseSelection values('" + Session["Formno"].ToString() + "','" + ddl_course.SelectedValue.ToString() + "',null,null,0,null,GETDATE(),null,null,null,null,null);";
+            str = "insert into OLA_FY_adm_CourseSelection values('" + Session["Formno"].ToString() + "','" + ddl_course.SelectedValue.ToString() + "',null,null,0,null,GETDATE(),null,null,null,null,null);update d_adm_applicant set step7_flag=1,step7_dt=getDate() where form_no='" + Session["Formno"].ToString() + "' and ACDID='" + Session["AYID"].ToString() + "' and Del_Flag=0;";
         }
 
         cls.DMLqueries(str);
