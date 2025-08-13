@@ -68,12 +68,12 @@
                 document.getElementById("<%=ddlCategory.ClientID%>").focus();
                 return false;
             }
-            if (document.getElementById("<%=ddlNcc.ClientID%>").value == "--Select--") {
+           <%-- if (document.getElementById("<%=ddlNcc.ClientID%>").value == "--Select--") {
                 alert("Please Enter member of NCC/NSS");
                 document.getElementById("<%=ddlNcc.ClientID%>").focus();
                 return false;
-            }
-            if (document.getElementById("<%=txtEarning.ClientID%>").value == "") {
+            }--%>
+            <%--if (document.getElementById("<%=txtEarning.ClientID%>").value == "") {
                 alert("Please Enter Earning");
                 document.getElementById("<%=txtEarning.ClientID%>").focus();
                 return false;
@@ -87,7 +87,7 @@
                 alert("Please Enter Yearly Income");
                 document.getElementById("<%=txtIncome.ClientID%>").focus();
                 return false;
-            }
+            }--%>
 
             return true;
         }

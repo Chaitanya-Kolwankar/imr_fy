@@ -146,7 +146,7 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             <div class="table-responsive">
-                                <asp:GridView ID="dgvData" runat="server" class="table table-hover" DataKeyNames="group_id,Group_title" ForeColor="#333333" AutoGenerateColumns="False" OnRowCommand="dgvData_RowCommand">
+                                <asp:GridView ID="dgvData" runat="server" class="table table-hover" DataKeyNames="group_id,Group_title" ForeColor="#333333" AutoGenerateColumns="False" OnRowCommand="dgvData_RowCommand" Visible="false">
                                     <RowStyle HorizontalAlign="Center" BackColor="#F7F6F3" ForeColor="#333333"></RowStyle>
                                     <Columns>
                                         <asp:TemplateField HeaderText="Previous Faculty" Visible="false">

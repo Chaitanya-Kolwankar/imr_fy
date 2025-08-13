@@ -252,7 +252,7 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <span style="font-family: Verdana">Last Name <span style="color: #ff3333">*</span> </span>
+                                        <span style="font-family: Verdana">Last Name </span>
                                         <br />
                                         <asp:TextBox runat="server" type="text" name="last_name" ID="txtsurname" class="uppercase form-control" placeholder="Last Name" TabIndex="6" oninput="allowOnlyAlphabets(event)" MaxLength="24"></asp:TextBox>
                                     </div>

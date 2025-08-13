@@ -309,7 +309,7 @@ public partial class Basic_Detail : System.Web.UI.Page
             //string date_final = ddyear.SelectedItem.Text + "/" + ddmonth.SelectedValue.ToString() + "/" + ddday.SelectedItem.Text;
            // string date_final = ddday.Text.ToString() + '-' + ddmonth.Text.ToString() + '-' + ddyear.Text.ToString();
 
-            string DOB = ddday.Text.ToString() + '-' + ddmonth.Text.ToString() + '-' + ddyear.Text.ToString();
+            string DOB = ddday.Text.ToString() + '-' + ddmonth.SelectedValue.ToString() + '-' + ddyear.Text.ToString();
 
             //DateTime DOB = Convert.ToDateTime(date_final);
 

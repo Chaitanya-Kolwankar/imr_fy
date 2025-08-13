@@ -567,10 +567,10 @@ public partial class FY_Other_Information : System.Web.UI.Page
 
     public bool check_radio()
     {
-        if (rbtnYes_isScholorship.Checked == false && rbtnNo_isScholorship.Checked == false)
-        {
-            return false;
-        }
+        //if (rbtnYes_isScholorship.Checked == false && rbtnNo_isScholorship.Checked == false)
+        //{
+        //    return false;
+        //}
 
         return true;
     }
@@ -722,20 +722,20 @@ public partial class FY_Other_Information : System.Web.UI.Page
                     UpdateQuery = UpdateQuery + " Earning=" + Convert.ToInt32(txtEarning.Text.ToString().Trim()) + ", NonEarning=" + Convert.ToInt32(txtNonEarning.Text.ToString().Trim()) + ",Remark='" + txtaadhar.Text + "'+'|'+'" + txtdteid.Text + "'  ";
                     UpdateQuery = UpdateQuery + "";
 
-                    if (txtaadhar.Text == "")
-                    {
-                        //ErrorMessageDisplay("Please provide Aadhar No.");
+                    //if (txtaadhar.Text == "")
+                    //{
+                    //    //ErrorMessageDisplay("Please provide Aadhar No.");
 
-                        ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "anything", "alert('Please provide Aadhar No.');", true);
-                        chkflag = true;
-                    }
-                    else if (txtaadhar.Text.Length != 12)
-                    {
-                        //ErrorMessageDisplay("Please provide 12 Digit Aadhar No.");
+                    //    ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "anything", "alert('Please provide Aadhar No.');", true);
+                    //    chkflag = true;
+                    //}
+                    //else if (txtaadhar.Text.Length != 12)
+                    //{
+                    //    //ErrorMessageDisplay("Please provide 12 Digit Aadhar No.");
 
-                        ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "anything", "alert('Please provide 12 Digit Aadhar No.');", true);
-                        chkflag = true;
-                    }
+                    //    ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "anything", "alert('Please provide 12 Digit Aadhar No.');", true);
+                    //    chkflag = true;
+                    //}
 
                     if (txtdteid.Text == "" && chkflag == false)
                     {
@@ -746,6 +746,7 @@ public partial class FY_Other_Information : System.Web.UI.Page
                     }
 
                     bool updated = false;
+                    UpdateQuery = UpdateQuery.Trim().TrimEnd(',');
                     if (chkflag == false)
                     {
                         updated = cls.insert_data_app(UpdateQuery + ",step5_flag=1,step5_dt=getdate() " + "where Form_no='" + Session["Formno"].ToString() + "' and ACDID='" + Session["ayid"].ToString() + "' and del_flag=0");
@@ -856,28 +857,28 @@ public partial class FY_Other_Information : System.Web.UI.Page
                 bool chkflag = false;
                 UpdateQuery = UpdateQuery + " is_NSS_NCC='" + ddlNcc.Text + "', ";
 
-                if (txtaadhar.Text == "")
-                {
-                    //ErrorMessageDisplay("Please provide Aadhar No.");
+                //if (txtaadhar.Text == "")
+                //{
+                //    //ErrorMessageDisplay("Please provide Aadhar No.");
 
-                    ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "anything", "alert('Please provide Aadhar No.');", true);
-                    chkflag = true;
-                }
-                else if (txtaadhar.Text.Length != 12)
-                {
-                    //ErrorMessageDisplay("Please provide 12 Digit Aadhar No.");
+                //    ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "anything", "alert('Please provide Aadhar No.');", true);
+                //    chkflag = true;
+                //}
+                //else if (txtaadhar.Text.Length != 12)
+                //{
+                //    //ErrorMessageDisplay("Please provide 12 Digit Aadhar No.");
 
-                    ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "anything", "alert('Please provide 12 Digit Aadhar No.');", true);
-                    chkflag = true;
-                }
+                //    ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "anything", "alert('Please provide 12 Digit Aadhar No.');", true);
+                //    chkflag = true;
+                //}
 
-                if (txtdteid.Text == "")
-                {
-                    //ErrorMessageDisplay("Please provide DTE Application No.");
+                //if (txtdteid.Text == "")
+                //{
+                //    //ErrorMessageDisplay("Please provide DTE Application No.");
 
-                    ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "anything", "alert('Please provide DTE Application No.');", true);
-                    chkflag = true;
-                }
+                //    ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "anything", "alert('Please provide DTE Application No.');", true);
+                //    chkflag = true;
+                //}
 
 
                 if (rbtnYes_isScholorship.Checked == true)
@@ -888,12 +889,15 @@ public partial class FY_Other_Information : System.Web.UI.Page
                 {
                     UpdateQuery = UpdateQuery + " is_Scholarship=1, ";
                 }
-                UpdateQuery = UpdateQuery + " Earning=" + Convert.ToInt32(txtEarning.Text.ToString().Trim()) + ", NonEarning=" + Convert.ToInt32(txtNonEarning.Text.ToString().Trim()) + ",Remark='" + txtaadhar.Text + "'+'|'+'" + txtdteid.Text + "'  ";
-                UpdateQuery = UpdateQuery + "";
+                if (txtEarning.Text.ToString().Trim() != "" && txtNonEarning.Text.ToString().Trim() !="" ) {
+                    UpdateQuery = UpdateQuery + " Earning=" + Convert.ToInt32(txtEarning.Text.ToString().Trim()) + ", NonEarning=" + Convert.ToInt32(txtNonEarning.Text.ToString().Trim()) + ",Remark='" + txtaadhar.Text + "'+'|'+'" + txtdteid.Text + "'  ";
+                    UpdateQuery = UpdateQuery + ",";
+                }
 
 
 
                 bool updated = false;
+                UpdateQuery = UpdateQuery.Trim().TrimEnd(',');
                 if (chkflag == false)
                 {
                     updated = cls.insert_data_app(UpdateQuery + ",step5_flag=1,step5_dt=getdate() " + "where Form_no='" + Session["Formno"].ToString() + "' and ACDID='" + Session["ayid"].ToString() + "' and del_flag=0");

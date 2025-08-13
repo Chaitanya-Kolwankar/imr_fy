@@ -54,7 +54,7 @@ public partial class FY_Apply_Course : System.Web.UI.Page
                         }
 
                     }
-                    dgvData.Visible = false;
+                    //dgvData.Visible = false;
                     Session["group_id"] = ddl_course.SelectedValue.ToString();
                     DataTable dt = cls.fill_datatable("select * from OLA_FY_adm_CourseSelection where formno='" + Session["Formno"].ToString() + "'and del_flag=0 and group_id='" + ddl_course.SelectedValue.ToString() + "'");
                     string str = "";

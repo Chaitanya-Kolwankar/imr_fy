@@ -353,12 +353,12 @@
                                         <div class="col-lg-6">
                                             <span style="FONT-FAMILY: Verdana">Total Marks Obtained <span style="COLOR: #ff3333">*</span>&nbsp;</span>
                                             <br />
-                                            <asp:TextBox runat="server" type="text" name="txt10marksobtained" ID="txt10marksobtained" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Total Marks Obtained" MaxLength="4" TabIndex="9"></asp:TextBox>
+                                            <asp:TextBox runat="server" type="text" name="txt10marksobtained" ID="txt10marksobtained" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Total Marks Obtained" MaxLength="4" TabIndex="9"  oncopy="return false" onpaste="return false"></asp:TextBox>
                                         </div>
                                         <div class="col-lg-6">
                                             <span style="FONT-FAMILY: Verdana">Out of Marks <span style="COLOR: #ff3333">*</span>&nbsp;</span>
                                             <br />
-                                            <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" name="txt10totalmarks" ID="txt10totalmarks" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Out of Marks " MaxLength="4" TabIndex="10"></asp:TextBox>
+                                            <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" name="txt10totalmarks" ID="txt10totalmarks" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Out of Marks " MaxLength="4" TabIndex="10"  oncopy="return false" onpaste="return false"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row topMargin">
@@ -509,13 +509,13 @@
                                         <div class="col-lg-6">
                                             <span style="FONT-FAMILY: Verdana">Total Marks Obtained<span style="COLOR: #ff3333">*</span>&nbsp</span>
                                             <br />
-                                            <asp:TextBox runat="server" type="text" name="txt12marksobtained" ID="txt12marksobtained" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Total Marks Obtained" onblur="OnBlur(this);" onfocus="OnFocus(this);" MaxLength="4" TabIndex="23"></asp:TextBox>
+                                            <asp:TextBox runat="server" type="text" name="txt12marksobtained" ID="txt12marksobtained" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Total Marks Obtained" onblur="OnBlur(this);" onfocus="OnFocus(this);" MaxLength="4" TabIndex="23"  oncopy="return false" onpaste="return false"></asp:TextBox>
 
                                         </div>
                                         <div class="col-lg-6">
                                             <span style="FONT-FAMILY: Verdana">Out of Marks<span style="COLOR: #ff3333">*</span>&nbsp</span>
                                             <br />
-                                            <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" onfocus="OnFocus(this);" TabIndex="24" name="txt12totalmarks" ID="txt12totalmarks" class="uppercase form-control" onkeypress="CheckNumeric(event);" MaxLength="4" placeholder="Out of Marks "></asp:TextBox>
+                                            <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" onfocus="OnFocus(this);" TabIndex="24" name="txt12totalmarks" ID="txt12totalmarks" class="uppercase form-control" onkeypress="CheckNumeric(event);" MaxLength="4" placeholder="Out of Marks "  oncopy="return false" onpaste="return false"></asp:TextBox>
 
                                         </div>
                                     </div>
@@ -674,13 +674,13 @@
                                         <div class="col-lg-6">
                                             <span style="FONT-FAMILY: Verdana">Total Marks Obtained <span style="COLOR: #ff3333">*</span> </span>
                                             <br />
-                                            <asp:TextBox runat="server" type="text" name="txtTYmarksobtained" ID="txtTYmarksobtained" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Total Marks Obtained" onblur="OnBlur(this);" onfocus="OnFocus(this);" TabIndex="64" MaxLength="3"></asp:TextBox>
+                                            <asp:TextBox runat="server" type="text" name="txtTYmarksobtained" ID="txtTYmarksobtained" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Total Marks Obtained" onblur="OnBlur(this);" onfocus="OnFocus(this);" TabIndex="64" MaxLength="3"  oncopy="return false" onpaste="return false"></asp:TextBox>
 
                                         </div>
                                         <div class="col-lg-6">
                                             <span style="FONT-FAMILY: Verdana">Out of Marks <span style="COLOR: #ff3333">*</span> </span>
                                             <br />
-                                            <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" onfocus="OnFocus(this);" TabIndex="65" name="txtTYtotalmarks" ID="txtTYtotalmarks" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Out of Marks" MaxLength="3"></asp:TextBox>
+                                            <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" onfocus="OnFocus(this);" TabIndex="65" name="txtTYtotalmarks" ID="txtTYtotalmarks" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Out of Marks" MaxLength="3"  oncopy="return false" onpaste="return false"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row topMargin">
@@ -910,7 +910,7 @@
                                         <div class="col-lg-6">
                                             <span style="FONT-FAMILY: Verdana">Out of Marks <span style="COLOR: #ff3333">*</span> </span>
                                             <br />
-                                            <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" onfocus="OnFocus(this);" TabIndex="65" name="txt_pg_outof_mks" ID="txt_pg_outof_mks" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Out of Marks" MaxLength="3"></asp:TextBox>
+                                            <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" onfocus="OnFocus(this);" TabIndex="65" name="txt_pg_outof_mks" ID="txt_pg_outof_mks" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Out of Marks" MaxLength="3"  oncopy="return false" onpaste="return false"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row topMargin">
@@ -1003,7 +1003,7 @@
                                                     <div class="col-lg-6">
                                                         <span style="FONT-FAMILY: Verdana">Total Marks<span style="COLOR: #ff3333">*</span>&nbsp;</span>
                                                         <br />
-                                                        <asp:TextBox onblur="OnBlur(this);" onkeypress="CheckNumeric(event);" ID="txt_sem1_ttmks" onfocus="OnFocus(this);" TabIndex="38" runat="server" CssClass="form-control" MaxLength="4"></asp:TextBox>
+                                                        <asp:TextBox onblur="OnBlur(this);" onkeypress="CheckNumeric(event);" ID="txt_sem1_ttmks" onfocus="OnFocus(this);" TabIndex="38" runat="server" CssClass="form-control" MaxLength="4"  oncopy="return false" onpaste="return false"></asp:TextBox>
                                                     </div>
                                                 </div>
 
@@ -1059,12 +1059,12 @@
                                                     <div class="col-lg-6">
                                                         <span style="FONT-FAMILY: Verdana">Marks Obtain<span style="COLOR: #ff3333">*</span>&nbsp;</span>
                                                         <br />
-                                                        <asp:TextBox onblur="OnBlur(this);" ID="txt_sem2_mkobtain" onkeypress="CheckNumeric(event);" onfocus="OnFocus(this);" TabIndex="37" runat="server" CssClass="form-control" MaxLength="4"></asp:TextBox>
+                                                        <asp:TextBox onblur="OnBlur(this);" ID="txt_sem2_mkobtain" onkeypress="CheckNumeric(event);" onfocus="OnFocus(this);" TabIndex="37" runat="server" CssClass="form-control" MaxLength="4"  oncopy="return false" onpaste="return false"></asp:TextBox>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <span style="FONT-FAMILY: Verdana">Total Marks<span style="COLOR: #ff3333">*</span>&nbsp;</span>
                                                         <br />
-                                                        <asp:TextBox onblur="OnBlur(this);" ID="txt_sem2_ttmks" onkeypress="CheckNumeric(event);" onfocus="OnFocus(this);" TabIndex="38" runat="server" CssClass="form-control" MaxLength="4"></asp:TextBox>
+                                                        <asp:TextBox onblur="OnBlur(this);" ID="txt_sem2_ttmks" onkeypress="CheckNumeric(event);" onfocus="OnFocus(this);" TabIndex="38" runat="server" CssClass="form-control" MaxLength="4"  oncopy="return false" onpaste="return false"></asp:TextBox>
                                                     </div>
                                                 </div>
 

@@ -157,19 +157,9 @@
                         <asp:ListItem>--SELECT--</asp:ListItem>
                         <asp:ListItem>STUDENT_PHOTO</asp:ListItem>
                         <asp:ListItem>STUDENT_SIGNATURE</asp:ListItem>
-                        <asp:ListItem>STUDENT_ACKNOWLEDGMENT_FC_CENTER</asp:ListItem>
-                        <asp:ListItem>STUDENT_CET_OR_JEE_SCORECARD</asp:ListItem>
-                        <asp:ListItem>STUDENT_SEAT_ALLOTMENT_DTE</asp:ListItem>
-                        <asp:ListItem>STUDENT_SEAT_ACCEPTANCE(ARC)</asp:ListItem>
-                        <asp:ListItem>STUDENT_SSC_MARKSHEET</asp:ListItem>
-                        <asp:ListItem>STUDENT_SSC_PASSING_CERTIFICATE</asp:ListItem>
-                        <asp:ListItem>STUDENT_HSC_MARKSHEET</asp:ListItem>
-                        <asp:ListItem>STUDENT_LEAVING_CERTIFICATE</asp:ListItem>
-                        <asp:ListItem>STUDENT_BIRTH_CERTIFICATE</asp:ListItem>
                         <asp:ListItem>STUDENT_AADHARCARD</asp:ListItem>
-                        <asp:ListItem>STUDENT_MUMBAI_UNIVERSITY_FORM</asp:ListItem>
-                        <asp:ListItem>STUDENT_GAP_CERTIFICATE</asp:ListItem>
-                        <asp:ListItem>STUDENT_MIGRATION_CERTIFICATE</asp:ListItem>
+                        <asp:ListItem>STUDENT_PAN</asp:ListItem>
+                        <asp:ListItem>STUDENT_OTHER_DOCUMENT</asp:ListItem>
 
                     </asp:DropDownList>
                 </div>
