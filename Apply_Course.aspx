@@ -176,7 +176,6 @@
                                             </ItemTemplate>
                                         </asp:TemplateField>
 
-                                        <asp:CommandField ButtonType="Link" ShowDeleteButton="true" HeaderText="Cancel"></asp:CommandField>
                                         <asp:TemplateField HeaderText="PRINT">
                                             <ItemTemplate>
                                                 <asp:Button ID="btnPrint" runat="server" Text="PRINT" CommandName="print" CssClass="btn btn-warning" OnClientClick="aspnetForm.target ='_blank'"></asp:Button>
