@@ -27,7 +27,7 @@ public partial class FY_Apply_Course : System.Web.UI.Page
                 else
                 {
                     string flag = "0";
-                    DataTable dt_chk_pay = cls.fill_datatable("select Formno from admProvFees where Formno='" + Session["Formno"].ToString() + "' and ayid='" + Session["AYID"].ToString() + "'");
+                    DataTable dt_chk_pay = cls.fill_datatable("select Formno from admProvFees where Formno='" + Session["Formno"].ToString() + "' and ayid='" + Session["AYID"].ToString() + "' and paid_status=1");
                     if (dt_chk_pay.Rows.Count != 0)
                     {
                         flag = "1";
@@ -347,7 +347,6 @@ public partial class FY_Apply_Course : System.Web.UI.Page
         if (e.CommandName == "Confirm")
         {
             clear_div_con();
-            div_com.Visible = true;
             Label lbldgv = (Label)dgvData.Rows[0].FindControl("lblGroupid");
             get_amt_pay(lbldgv.Text);
             txt_amount_final.ReadOnly = true;
@@ -360,6 +359,18 @@ public partial class FY_Apply_Course : System.Web.UI.Page
             Session["subcourse_id_g_check"] = ((Label)row1.FindControl("lblSubcourse")).Text.ToString().Trim();           //lblSubcourse
             group_id.Text = dgvData.DataKeys[row.RowIndex].Values["group_id"].ToString();
             subcourse.Text = ((Label)row1.FindControl("lblSubcourse")).Text.ToString().Trim();
+            string qry_amt = "";
+            DataTable dtamt = cls.fill_datatable("select amount from admProvfees where formno='"+ Session["Formno"].ToString() + "' and ayid='"+ Session["AYID"].ToString() + "' and del_flag=0");
+            if (dtamt.Rows.Count >0 )
+            {
+                txt_amount_final.Text = dtamt.Rows[0][0].ToString();
+                div_com.Visible = true;
+            }
+            else
+            {
+                div_valid.InnerText = "Fees Not Defined";
+                div_com.Visible = false;
+            }
         }
     }
 

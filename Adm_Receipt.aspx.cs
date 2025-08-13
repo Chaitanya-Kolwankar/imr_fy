@@ -77,7 +77,7 @@ public partial class Adm_Receipt : System.Web.UI.Page
                             process_date = parsedDate.ToString("yyyy-MM-dd");
                             amount = Convert.ToDecimal(amount).ToString("0");
 
-                            c1.DMLqueries("insert into admProvFees(formno, Amount, Ayid, Pay_date,Struct_name,Recpt_mode,receipt_no,chq_status,user_id,curr_dt,del_flag) values ('" + Form_no + "','" + amount + "',(select MAX(ayid) from m_academic),(CAST('" + process_date + "' AS datetime)),'Provisional Admission','Online','" + txn_id + "','CLEAR','" + Form_no + "',GETDATE(),0);");
+                            c1.DMLqueries("update admProvFees set paid_status=1, receipt_no='" + txn_id + "' where formno='" + Form_no + "' and  Recpt_mode='Online' and ayid=(select MAX(ayid) from m_academic) and amount='" + amount + "'");
                             //------
                             lbl_deductedinfo.Visible = false;
                         }
