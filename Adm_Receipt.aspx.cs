@@ -77,7 +77,7 @@ public partial class Adm_Receipt : System.Web.UI.Page
                             process_date = parsedDate.ToString("yyyy-MM-dd");
                             amount = Convert.ToDecimal(amount).ToString("0");
 
-                            c1.DMLqueries("update admProvFees set paid_status=1, receipt_no='" + txn_id + "' where formno='" + Form_no + "' and  Recpt_mode='Online' and ayid=(select MAX(ayid) from m_academic) and amount='" + amount + "'");
+                            c1.DMLqueries("update admProvFees set paid_status=1, receipt_no='" + txn_id + "' where formno='" + Form_no + "' and ayid=(select MAX(ayid) from m_academic) and del_flag=0");
                             //------
                             lbl_deductedinfo.Visible = false;
                         }

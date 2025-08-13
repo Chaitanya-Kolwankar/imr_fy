@@ -369,6 +369,7 @@ public partial class FY_Apply_Course : System.Web.UI.Page
             else
             {
                 div_valid.InnerText = "Fees Not Defined";
+                div_valid.Visible = true;
                 div_com.Visible = false;
             }
         }
