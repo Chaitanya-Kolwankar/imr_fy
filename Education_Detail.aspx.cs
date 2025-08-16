@@ -34,56 +34,56 @@ public partial class FY_Education_Detail : System.Web.UI.Page
                         Response.Redirect("Apply_Courses.aspx", false);
                     }
                     else
-                    {                             
-                            if (Session["step2_flag"] != null)
+                    {
+                        if (Session["step2_flag"] != null)
+                        {
+                            if (Session["step2_flag"].ToString() == "True")
                             {
-                                if (Session["step2_flag"].ToString() == "True")
+                                if (Session["step3_flag"].ToString() == "True")
                                 {
-                                    if (Session["step3_flag"].ToString() == "True")
+                                    if (((DataSet)Session["stud_data"]).Tables[0].Rows.Count > 0)
                                     {
-                                        if (((DataSet)Session["stud_data"]).Tables[0].Rows.Count > 0)
-                                        {
-                                            fill_data();
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString() == "FY")
-                                        {
-                                            txt12seatno.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["seat_no"].ToString();
-                                            //txt12seatno.Enabled = false;
-                                        }
-                                        //if (((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString() == "FYPG")
-                                        //{
-                                        //    txtTYseatno.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["seat_no1"].ToString();
-                                        //    txtTYseatno.Enabled = false;
-                                        //}
-
-                                        if (((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString() == "SY" || ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString() == "TY" || ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString() == "SYPG" || ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString() == "SYPG")
-                                        {
-
-                                            //txt_sem1_cre.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["reg_sem1"].ToString();
-                                            //txt_sem2_cre.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["reg_sem2"].ToString();
-                                           
-                                     
-                                            if (((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString() == "TY" || ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString() == "SYPG" || ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString() == "SYPG")
-                                            {
-                                                //txt_sem3_cre.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["reg_sem3"].ToString();
-                                                //txt_sem4_cre.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["reg_sem4"].ToString();
-                                            }
-                                        }
+                                        fill_data();
                                     }
                                 }
                                 else
                                 {
-                                    Response.Redirect("Personal_Detail.aspx");
+                                    if (((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString() == "FY")
+                                    {
+                                        txt12seatno.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["seat_no"].ToString();
+                                        //txt12seatno.Enabled = false;
+                                    }
+                                    //if (((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString() == "FYPG")
+                                    //{
+                                    //    txtTYseatno.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["seat_no1"].ToString();
+                                    //    txtTYseatno.Enabled = false;
+                                    //}
+
+                                    if (((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString() == "SY" || ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString() == "TY" || ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString() == "SYPG" || ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString() == "SYPG")
+                                    {
+
+                                        //txt_sem1_cre.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["reg_sem1"].ToString();
+                                        //txt_sem2_cre.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["reg_sem2"].ToString();
+
+
+                                        if (((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString() == "TY" || ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString() == "SYPG" || ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString() == "SYPG")
+                                        {
+                                            //txt_sem3_cre.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["reg_sem3"].ToString();
+                                            //txt_sem4_cre.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["reg_sem4"].ToString();
+                                        }
+                                    }
                                 }
                             }
+                            else
+                            {
+                                Response.Redirect("Personal_Detail.aspx");
+                            }
+                        }
                     }
                 }
                 else
                 {
-                   Response.Redirect("login.aspx");
+                    Response.Redirect("login.aspx");
                 }
             }
             catch (Exception ex)
@@ -93,7 +93,7 @@ public partial class FY_Education_Detail : System.Web.UI.Page
         }
     }
 
-    public void dropdown(DropDownList dropdown,string item)
+    public void dropdown(DropDownList dropdown, string item)
     {
         int i;
         bool flag = false;
@@ -113,7 +113,7 @@ public partial class FY_Education_Detail : System.Web.UI.Page
         {
             dropdown.SelectedIndex = 0;
         }
-       // dropdown.SelectedIndex= i;
+        // dropdown.SelectedIndex= i;
     }
 
     public void dropdownSelect(DropDownList dropdown1, string item)
@@ -125,7 +125,8 @@ public partial class FY_Education_Detail : System.Web.UI.Page
         dropdown1.DataTextField = "child";
         dropdown1.DataBind();
         dropdown1.Items.Insert(0, new ListItem("-- Select --", "0"));
-       // dropdown(ddl10board, setItem);
+        dropdown1.Items.Add(new ListItem("OTHER", "OTHER"));
+        // dropdown(ddl10board, setItem);
     }
 
     public void dropdownSelectHsc(DropDownList dropdown1, string item)
@@ -137,6 +138,7 @@ public partial class FY_Education_Detail : System.Web.UI.Page
         dropdown1.DataTextField = "child";
         dropdown1.DataBind();
         dropdown1.Items.Insert(0, new ListItem("-- Select --", "0"));
+        dropdown1.Items.Add(new ListItem("OTHER", "OTHER"));
         // dropdown(ddl10board, setItem);
     }
 
@@ -168,16 +170,28 @@ public partial class FY_Education_Detail : System.Web.UI.Page
     {
         //SSC details
 
-        dropdown(ddl10StateBoard,((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_State"].ToString());
+        dropdown(ddl10StateBoard, ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_State"].ToString());
         if (((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_Board_name"].ToString() != "")
         {
             dropdownSelect(ddl10board, ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_State"].ToString());
             if (ddl10board.Items.Count > 1)
             {
-                ddl10board.Items.FindByText(((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_Board_name"].ToString()).Selected = true;
+                if (ddl10board.Items.FindByText(((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_State"].ToString()) == null)
+                {
+                    ddl10board.SelectedValue = "OTHER";
+                    div10ddl.Attributes["class"] = "col-lg-6";
+                    div10board.Visible = true;
+                    txt10board.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_Board_name"].ToString();
+                }
+                else
+                {
+                    ddl10board.Items.FindByText(((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_Board_name"].ToString()).Selected = true;
+                    div10ddl.Attributes["class"] = "col-lg-12";
+                    div10board.Visible = false;
+                }
             }
         }
-      
+
         //dropdown(ddl10board, ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_Board_name"].ToString());
         if (ddl10passyear.Items.Count > 1)
         {
@@ -195,7 +209,7 @@ public partial class FY_Education_Detail : System.Web.UI.Page
         }
         //dropdown(ddl10passyear, ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_Year"].ToString());
         //dropdown(ddl10passmonth, ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_Month"].ToString());
-      
+
 
         txt10institutename.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_Ins_Name"].ToString();
         txt10instituteplace.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_Ins_place"].ToString();
@@ -203,11 +217,11 @@ public partial class FY_Education_Detail : System.Web.UI.Page
         txt10seatno.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_seat_no"].ToString();
         txt10totalmarks.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_Mks_OutOf"].ToString();
         txt10_grade.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_grade"].ToString();
-       
+
 
         if (!string.IsNullOrEmpty(((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_First_Attempt"].ToString()))
         {
-          if (Convert.ToBoolean(((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_First_Attempt"]))
+            if (Convert.ToBoolean(((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_First_Attempt"]))
             { rbt10YesAttempt.Checked = true; }
             else
             { rbt10NoAttempt.Checked = true; }
@@ -221,8 +235,20 @@ public partial class FY_Education_Detail : System.Web.UI.Page
         {
             dropdownSelectHsc(ddl12board, ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["State_board"].ToString());
             if (ddl12board.Items.Count > 1)
-            { 
-                ddl12board.Items.FindByText(((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Board_name"].ToString()).Selected = true;
+            {
+                if (ddl12board.Items.FindByText(((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Board_name"].ToString()) == null)
+                {
+                    ddl12board.SelectedValue = "OTHER";
+                    div12ddl.Attributes["class"] = "col-lg-6";
+                    div12board.Visible = true;
+                    txt12board.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Board_name"].ToString();
+                }
+                else
+                {
+                    ddl12board.Items.FindByText(((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Board_name"].ToString()).Selected = true;
+                    div12ddl.Attributes["class"] = "col-lg-12";
+                    div12board.Visible = false;
+                }
             }
         }
 
@@ -244,7 +270,7 @@ public partial class FY_Education_Detail : System.Web.UI.Page
 
         txt12institutename.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Ins_name"].ToString();
         txt12instituteplace.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Ins_place"].ToString();
-        txt12marksobtained.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Mks_Obtained"].ToString();        
+        txt12marksobtained.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Mks_Obtained"].ToString();
         txt12totalmarks.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Mks_Outof"].ToString();
         txt12grade.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["grade"].ToString();
         if (((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString() == "FY")
@@ -291,7 +317,7 @@ public partial class FY_Education_Detail : System.Web.UI.Page
 
         //txt_fy_univer.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["fy_university_name"].ToString();
 
-       
+
 
         //-------------------------------graduation
 
@@ -333,9 +359,13 @@ public partial class FY_Education_Detail : System.Web.UI.Page
         txtTYgrade.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["ty_grade_obt"].ToString();
         txt_graduation_university.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["ty_board"].ToString();
         ddl_examcet_type.SelectedValue = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["exam_type"].ToString();
-      //  txt_cet_mks_obt.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["jee_obt"].ToString();
-       // txt_cet_mks_outof.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["jee_outof"].ToString();
-        txt_percentile.Text =((DataSet)Session["stud_data"]).Tables[0].Rows[0]["entrance_percentile"].ToString();
+        ddl_Experience.SelectedValue = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Exp_Yrs"].ToString();
+        txt_cmpn_name.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Company"].ToString();
+        txt_Designation.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Designation"].ToString();
+
+        //  txt_cet_mks_obt.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["jee_obt"].ToString();
+        // txt_cet_mks_outof.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["jee_outof"].ToString();
+        txt_percentile.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["entrance_percentile"].ToString();
         //txt_entrance_rollno.Text= ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["entrance_rollno"].ToString();
         //txt_entrancepasswd.Text = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["entrance_password"].ToString();
 
@@ -409,27 +439,26 @@ public partial class FY_Education_Detail : System.Web.UI.Page
 
     void hidetabs()
     {
-        tabhsc.Visible = false;       
+        tabhsc.Visible = false;
         tab_grad.Visible = false;
         tabpg.Visible = false;
         tabfy.Visible = false;
         //tab_cet.Visible = false;
     }
 
-
-
     protected void ddl10StateBoard_SelectedIndexChanged(object sender, EventArgs e)
     {
-       
+
         DataSet state_board_name = c1.fill_dataset("select  child from dbo.State_category_details where Main = 'State' and parent = '" + ddl10StateBoard.Text.ToString().Trim() + "'");
         ddl10board.Items.Clear();
         ddl10board.DataSource = state_board_name.Tables[0];
-        
+
         ddl10board.DataTextField = "child";
         ddl10board.DataBind();
         ddl10board.Items.Insert(0, new ListItem("-- Select --", "0"));
+        ddl10board.Items.Add(new ListItem("OTHER", "OTHER"));
     }
- 
+
     protected void ddl12StateBoard_SelectedIndexChanged(object sender, EventArgs e)
     {
         DataSet state_board_name12 = c1.fill_dataset("select  child from dbo.State_category_details where Main = 'State' and parent = '" + ddl12StateBoard.Text.ToString().Trim() + "'");
@@ -450,7 +479,7 @@ public partial class FY_Education_Detail : System.Web.UI.Page
         //ddlTYboard.DataBind();
         //ddlTYboard.Items.Insert(0, new ListItem("-- Select --", "0"));
     }
-         
+
     protected void ddl_pg_state_SelectedIndexChanged(object sender, EventArgs e)
     {
         DataSet state_board_namepg = c1.fill_dataset("select child from dbo.State_category_details where Main = 'State' and parent = '" + ddl_pg_state.Text.ToString().Trim() + "'");
@@ -482,7 +511,7 @@ public partial class FY_Education_Detail : System.Web.UI.Page
             errorMessage.Visible = true;
             errorMessage.InnerText = "Enter Institute place";
             //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Enter Institute place');", true);
-        }        
+        }
         else if (txt_sem1_mkobtain.Text == "")
         {
             errorMessage.Visible = true;
@@ -529,7 +558,7 @@ public partial class FY_Education_Detail : System.Web.UI.Page
             DataSet ds = ((DataSet)Session["stud_data"]);
             string type = ds.Tables[0].Rows[0]["applicant_type"].ToString(), qry = "";
 
-            qry = "update dbo.d_adm_applicant set fyi_Institute_name='" + valid.replacequote( txtFYinstitutename.Text) + "',fy_sem1_obtain_mks='" + valid.replacequote(txt_sem1_mkobtain.Text) + "',fy_sem1_total_mks='" + valid.replacequote(txt_sem1_mkobtain.Text) + "', fyi_Institute_place='" + valid.replacequote (txtFYinstituteplace.Text) + "'," +
+            qry = "update dbo.d_adm_applicant set fyi_Institute_name='" + valid.replacequote(txtFYinstitutename.Text) + "',fy_sem1_obtain_mks='" + valid.replacequote(txt_sem1_mkobtain.Text) + "',fy_sem1_total_mks='" + valid.replacequote(txt_sem1_mkobtain.Text) + "', fyi_Institute_place='" + valid.replacequote(txtFYinstituteplace.Text) + "'," +
                    " fy_sem1_sgpi='" + txtSem1Sgpi.Text + "',fy_university_name='" + txt_fy_univer.Text + "', fy_sem2_sgpi='" + valid.replacequote(txtSem2Sgpi.Text) + "',fy_sem2_total_mks='" + valid.replacequote(txt_sem2_ttmks.Text) + "',fy_sem2_obtain_mks='" + valid.replacequote(txt_sem2_mkobtain.Text) + "'" +
                    " ,step3_flag=1,step3_dt=getDate() where Form_no='" + ds.Tables[0].Rows[0]["formno"].ToString() + "' and ACDID='" + ds.Tables[0].Rows[0]["ayid"].ToString() + "'";
 
@@ -625,10 +654,10 @@ public partial class FY_Education_Detail : System.Web.UI.Page
             errorMessage.InnerText = "Select Passing month";
             //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Select Passing month');", true);
         }
-        else if (txt_pg_seat.Text == "")
+        else if (txt_pg_grade.Text == "")
         {
             errorMessage.Visible = true;
-            errorMessage.InnerText = "Enter Seat No.";
+            errorMessage.InnerText = "Enter Grade";
             //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Enter Seat No.');", true);
         }
         else if (txt_pg_tot_mks_obt.Text == "")
@@ -659,9 +688,9 @@ public partial class FY_Education_Detail : System.Web.UI.Page
                 attempt = 1;
             }
 
-            qry = "update dbo.d_adm_applicant set pg_inst_name='" +valid.replacequote( txt_pg_institute_name.Text) + "', pg_inst_place='" + valid.replacequote(txt_pg_institute_place.Text) + "', " +
-                   " pg_board='" +txt_pg_university.Text + "',pg_seat_no='" + txt_pg_seat.Text + "',pg_first_attempt='" + attempt + "', pg_state='" + ddl_pg_state.SelectedItem.Text + "'," +
-                   " pg_total_mks='" + txt_pg_tot_mks_obt.Text + "',pg_passing_tear='" + ddl_pg_passing_year.Text + "',pg_course='"+txt_postGraduate_course.Text+"',pg_passing_month='" + ddl_pg_passing_month.Text + "', pg_out_of_mks='" + txt_pg_outof_mks.Text + "', pg_grade='" + txt_pg_grade.Text + "' " +
+            qry = "update dbo.d_adm_applicant set pg_inst_name='" + valid.replacequote(txt_pg_institute_name.Text) + "', pg_inst_place='" + valid.replacequote(txt_pg_institute_place.Text) + "', " +
+                   " pg_board='" + txt_pg_university.Text + "',pg_seat_no='" + txt_pg_seat.Text + "',pg_first_attempt='" + attempt + "', pg_state='" + ddl_pg_state.SelectedItem.Text + "'," +
+                   " pg_total_mks='" + txt_pg_tot_mks_obt.Text + "',pg_passing_tear='" + ddl_pg_passing_year.Text + "',pg_course='" + txt_postGraduate_course.Text + "',pg_passing_month='" + ddl_pg_passing_month.Text + "', pg_out_of_mks='" + txt_pg_outof_mks.Text + "', pg_grade='" + txt_pg_grade.Text + "' " +
                    " ,step3_flag=1,step3_dt=getDate() where Form_no='" + Session["Formno"].ToString() + "' and ACDID='" + Session["AYID"] + "'";
 
             if (c1.insert_data_app(qry))
@@ -752,10 +781,10 @@ public partial class FY_Education_Detail : System.Web.UI.Page
             errorMessage.InnerText = "Select Passing month";
             //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Select Passing month');", true);
         }
-        else if (txtTYseatno.Text == "")
+        else if (txtTYgrade.Text == "")
         {
             errorMessage.Visible = true;
-            errorMessage.InnerText = "Enter Seat No.";
+            errorMessage.InnerText = "Enter Grade";
             //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Enter Seat No.');", true);
         }
         else if (txtTYmarksobtained.Text == "")
@@ -784,8 +813,9 @@ public partial class FY_Education_Detail : System.Web.UI.Page
         else if (Convert.ToInt16(txtTYmarksobtained.Text) > Convert.ToInt16(txtTYtotalmarks.Text))
         {
             errorMessage.Visible = true;
-            errorMessage.InnerText = "Marks Obtained should be less than total marks";;
+            errorMessage.InnerText = "Marks Obtained should be less than total marks"; ;
         }
+
         else if (ddl_examcet_type.SelectedIndex == 0)
         {
             errorMessage.Visible = true;
@@ -814,6 +844,19 @@ public partial class FY_Education_Detail : System.Web.UI.Page
         //}
         else
         {
+            if (ddl_Experience.SelectedIndex > 0)
+            {
+                if (txt_Designation.Text.Trim() == "")
+                {
+                    errorMessage.Visible = true;
+                    errorMessage.InnerText = "Enter Designation";
+                }
+                else if (txt_cmpn_name.Text.Trim() == "")
+                {
+                    errorMessage.Visible = true;
+                    errorMessage.InnerText = "Company Name";
+                }
+            }
             // DataSet ds = ((DataSet)Session["App_data"]);
             string type = ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["applicant_type"].ToString(), qry = "";
             int attempt = 0;
@@ -830,7 +873,7 @@ public partial class FY_Education_Detail : System.Web.UI.Page
             qry = "update dbo.d_adm_applicant set ty_Institute_name='" + valid.replacequote(txtTYinstitutename.Text) + "', ty_Institute_place='" + valid.replacequote(txtTYinstituteplace.Text) + "', " +
                  " ty_board='" + txt_graduation_university.Text + "',ty_pass_year='" + ddlTYpassyear.Text + "',ty_course='" + txtGraduationCourse.Text + "',ty_pass_month='" + ddlTYmonth.Text + "', ty_state='" + ddlTYstate.SelectedItem.Text + "',ty_seat_no='" + txtTYseatno.Text + "'," +
                  " ty_marks_obt='" + txtTYmarksobtained.Text + "', ty_out_of='" + txtTYtotalmarks.Text + "',entrance_percentile='" + txt_percentile.Text + "',exam_type='" + ddl_examcet_type.Text + "',jee_obt='',jee_outof='', ty_grade_obt='" + txtTYgrade.Text + "',ty_first_attempt=" + attempt + " " +
-                 " ,step3_flag=1,step3_dt=getDate() where Form_no='" + Session["Formno"].ToString() + "' and ACDID='" + Session["AYID"] + "'";
+                 " ,step3_flag=1,step3_dt=getDate(),Exp_Yrs=NULLIF('" + ddl_Experience.SelectedValue.Replace("'", "''") + "',''),Designation=NULLIF('" + txt_Designation.Text.Trim().Replace("'", "''") + "',''),Company=NULLIF('" + txt_cmpn_name.Text.Trim().Replace("'", "''") + "','') where Form_no='" + Session["Formno"].ToString() + "' and ACDID='" + Session["AYID"] + "'";
 
             if (c1.insert_data_app(qry))
             {
@@ -848,6 +891,9 @@ public partial class FY_Education_Detail : System.Web.UI.Page
                 //((DataSet)Session["stud_data"]).Tables[0].Rows[0]["jee_obt"] = txt_cet_mks_obt.Text;
                 //((DataSet)Session["stud_data"]).Tables[0].Rows[0]["jee_outof"] = txt_cet_mks_outof.Text;
                 ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["entrance_percentile"] = txt_percentile.Text;
+                ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Exp_Yrs"] = ddl_Experience.SelectedValue;
+                ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Company"] = txt_cmpn_name.Text;
+                ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Designation"] = txt_Designation.Text;
                 //((DataSet)Session["stud_data"]).Tables[0].Rows[0]["entrance_rollno"] = txt_entrance_rollno.Text;
                 //((DataSet)Session["stud_data"]).Tables[0].Rows[0]["entrance_password"] = txt_entrancepasswd.Text;
 
@@ -884,7 +930,7 @@ public partial class FY_Education_Detail : System.Web.UI.Page
     {
         tabssc.Visible = true;
         tabhsc.Visible = false;
-    }    
+    }
     protected void btn_ssc_next_Click(object sender, EventArgs e)
     {
         err.Visible = false;
@@ -900,6 +946,11 @@ public partial class FY_Education_Detail : System.Web.UI.Page
             err.Visible = true;
             err.InnerText = "Select Board";
             //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Select Board');", true);
+        }
+        else if (ddl10board.Visible && txt10board.Text.Trim() == "")
+        {
+            err.Visible = true;
+            err.InnerText = "Enter Board Name";
         }
         else if (txt10institutename.Text == "")
         {
@@ -925,10 +976,10 @@ public partial class FY_Education_Detail : System.Web.UI.Page
             err.InnerText = "Select Passing manth";
             // ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Select Passing manth');", true);
         }
-        else if (txt10seatno.Text == "")
+        else if (txt10_grade.Text == "")
         {
             err.Visible = true;
-            err.InnerText = "Enter Seat No.";
+            err.InnerText = "Enter Grade";
             //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Enter Seat No.');", true);
         }
         else if (txt10marksobtained.Text == "")
@@ -951,15 +1002,8 @@ public partial class FY_Education_Detail : System.Web.UI.Page
         }
         else
         {
-            string grade = "";
-            if (txt10_grade.Text != "")
-            {
-                grade = txt10_grade.Text;
-            }
-            else
-            {
-                grade = txt10_grade.Text;
-            }
+            string grade = txt10_grade.Text;
+
             DataSet ds = ((DataSet)Session["stud_data"]);
             string type = ds.Tables[0].Rows[0]["applicant_type"].ToString(), qry = "";
             int attempt = 1;
@@ -973,8 +1017,8 @@ public partial class FY_Education_Detail : System.Web.UI.Page
                 attempt = 0;
             }
 
-            qry = "update dbo.d_adm_applicant set s_exam='S.S.C', S_Ins_Name='" + valid.replacequote( txt10institutename.Text) + "', S_Ins_place='" + valid.replacequote( txt10instituteplace.Text )+ "', S_seat_no='" + txt10seatno.Text + "'," +
-                   " S_Board_name='" + ddl10board.SelectedItem.Text + "', S_State='" + ddl10StateBoard.SelectedItem.Text + "', S_Month='" + ddl10passmonth.SelectedItem.Text + "', S_Year='" + ddl10passyear.SelectedItem.Text + "'," +
+            qry = "update dbo.d_adm_applicant set s_exam='S.S.C', S_Ins_Name='" + valid.replacequote(txt10institutename.Text) + "', S_Ins_place='" + valid.replacequote(txt10instituteplace.Text) + "', S_seat_no='" + txt10seatno.Text + "'," +
+                   " S_Board_name='" + (div10board.Visible ? txt10board.Text.Trim() : ddl10board.SelectedItem.Text) + "', S_State='" + ddl10StateBoard.SelectedItem.Text + "', S_Month='" + ddl10passmonth.SelectedItem.Text + "', S_Year='" + ddl10passyear.SelectedItem.Text + "'," +
                    " S_Mks_Obtained='" + txt10marksobtained.Text + "', S_Mks_OutOf='" + txt10totalmarks.Text + "', S_grade='" + grade + "',S_First_Attempt=" + attempt + " " +
                    " ,step3_flag=1,step3_dt=getDate() where Form_no='" + ds.Tables[0].Rows[0]["formno"].ToString() + "' and ACDID='" + ds.Tables[0].Rows[0]["ayid"].ToString() + "'";
 
@@ -983,7 +1027,7 @@ public partial class FY_Education_Detail : System.Web.UI.Page
                 ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_Ins_Name"] = txt10institutename.Text;
                 ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_Ins_place"] = txt10instituteplace.Text;
                 ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_seat_no"] = txt10seatno.Text;
-                ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_Board_name"] = ddl10board.SelectedItem.Text;
+                ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_Board_name"] = (div10board.Visible ? txt10board.Text.Trim() : ddl10board.SelectedItem.Text);
                 ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_State"] = ddl10StateBoard.SelectedItem.Text;
                 ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_Month"] = ddl10passmonth.SelectedItem.Text;
                 ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["S_Year"] = ddl10passyear.SelectedItem.Text;
@@ -1026,6 +1070,11 @@ public partial class FY_Education_Detail : System.Web.UI.Page
             err12.InnerText = "Select Board";
             //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Select Board');", true);
         }
+        else if (ddl12board.Visible && txt12board.Text.Trim() == "")
+        {
+            err.Visible = true;
+            err.InnerText = "Enter Board Name";
+        }
         else if (txt12institutename.Text == "")
         {
             err12.Visible = true;
@@ -1050,10 +1099,10 @@ public partial class FY_Education_Detail : System.Web.UI.Page
             err12.InnerText = "Select Passing month";
             //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Select Passing month');", true);
         }
-        else if (txt12seatno.Text == "")
+        else if (txt12grade.Text == "")
         {
             err12.Visible = true;
-            err12.InnerText = "Enter Seat No.";
+            err12.InnerText = "Enter Grade";
             // ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Enter Seat No.');", true);
         }
         else if (txt12marksobtained.Text == "")
@@ -1078,15 +1127,7 @@ public partial class FY_Education_Detail : System.Web.UI.Page
         }
         else
         {
-            string grade12 = "";
-            if (txt12grade.Text != "")
-            {
-                grade12 = txt12grade.Text;
-            }
-            else
-            {
-                grade12 = "";
-            }
+            string grade12 = txt12grade.Text;
 
             DataSet ds = ((DataSet)Session["stud_data"]);
             string type = ds.Tables[0].Rows[0]["applicant_type"].ToString(), qry = "";
@@ -1110,8 +1151,8 @@ public partial class FY_Education_Detail : System.Web.UI.Page
             }
 
 
-            qry = "update dbo.d_adm_applicant set exam='H.S.C', Ins_name='" +valid.replacequote( txt12institutename.Text) + "', Ins_place='" +valid.replacequote( txt12instituteplace.Text) + "', Seat_No='" + txt12seatno.Text + "'," +
-                   " Board_name='" + ddl12board.SelectedItem.Text + "', State_board='" + ddl12StateBoard.SelectedItem.Text + "', Month='" + dd12passmonth.SelectedItem.Text + "', Year='" + dd12passyear.SelectedItem.Text + "'," +
+            qry = "update dbo.d_adm_applicant set exam='H.S.C', Ins_name='" + valid.replacequote(txt12institutename.Text) + "', Ins_place='" + valid.replacequote(txt12instituteplace.Text) + "', Seat_No='" + txt12seatno.Text + "'," +
+                   " Board_name='" + (div12board.Visible ? txt12board.Text.Trim() : ddl12board.SelectedItem.Text) + "', State_board='" + ddl12StateBoard.SelectedItem.Text + "', Month='" + dd12passmonth.SelectedItem.Text + "', Year='" + dd12passyear.SelectedItem.Text + "'," +
                    " Mks_Obtained='" + txt12marksobtained.Text + "', Mks_Outof='" + txt12totalmarks.Text + "',diploma_holder=" + diploma + ", grade='" + grade12 + "',firstAttempt=" + attempt + " " +
                    " ,step3_flag=1,step3_dt=getDate() where Form_no='" + ds.Tables[0].Rows[0]["formno"].ToString() + "' and ACDID='" + ds.Tables[0].Rows[0]["ayid"].ToString() + "' ";
 
@@ -1120,7 +1161,7 @@ public partial class FY_Education_Detail : System.Web.UI.Page
                 ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Ins_name"] = txt12institutename.Text;
                 ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Ins_place"] = txt12instituteplace.Text;
                 ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Seat_No"] = txt12seatno.Text;
-                ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Board_name"] = ddl12board.SelectedItem.Text;
+                ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Board_name"] = (div12board.Visible ? txt12board.Text.Trim() : ddl12board.SelectedItem.Text);
                 ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["State_board"] = ddl12StateBoard.SelectedItem.Text;
                 ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Month"] = dd12passmonth.SelectedItem.Text;
                 ((DataSet)Session["stud_data"]).Tables[0].Rows[0]["Year"] = dd12passyear.SelectedItem.Text;
@@ -1206,5 +1247,39 @@ public partial class FY_Education_Detail : System.Web.UI.Page
         tabpg.Visible = false;
         tabfy.Visible = false;
         tab_grad.Visible = true;
+    }
+
+    protected void ddl10board_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        div10ddl.Attributes["class"] = "col-lg-12";
+        div10board.Visible = false;
+        txt12board.Text = string.Empty;
+        if (ddl10board.SelectedValue == "OTHER")
+        {
+            div10ddl.Attributes["class"] = "col-lg-6";
+            div10board.Visible = true;
+        }
+
+    }
+
+    protected void ddl12board_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        div12ddl.Attributes["class"] = "col-lg-12";
+        div12board.Visible = false;
+        txt12board.Text = string.Empty;
+        if (ddl12board.SelectedValue == "OTHER")
+        {
+            div12ddl.Attributes["class"] = "col-lg-6";
+            div12board.Visible = true;
+        }
+    }
+
+    protected void ddl_Experience_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if(ddl_Experience.SelectedValue== "")
+        {
+            txt_Designation.Text = string.Empty;
+            txt_cmpn_name.Text = string.Empty;
+        }
     }
 }

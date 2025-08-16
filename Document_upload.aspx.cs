@@ -35,29 +35,34 @@ public partial class Document_upload : System.Web.UI.Page
                     DataSet ds1 = cls.fill_dataset("select * from d_adm_applicant WHERE  Form_no='" + Session["formno"].ToString() + "' and ACDID='" + Session["ayid"].ToString() + "' and del_flag=0");
                     if (ds1.Tables[0].Rows[0]["Category"].ToString() != "OPEN")
                     {
-                        ddl_doc.Items.Add(new ListItem("STUDENT_CASTE_CERTIFICATE"));
-                        ddl_doc.Items.Add(new ListItem("STUDENT_CASTE_VALIDITY_CERTIFICATE"));
-                        ddl_doc.Items.Add(new ListItem("STUDENT_NON-CREAMY_LAYER"));
-                        ddl_doc.Items.Add(new ListItem("STUDENT_INCOME_CERTIFICATE"));
+                        //ddl_doc.Items.Add(new ListItem("STUDENT_CASTE_CERTIFICATE"));
+                        //ddl_doc.Items.Add(new ListItem("STUDENT_CASTE_VALIDITY_CERTIFICATE"));
+                        //ddl_doc.Items.Add(new ListItem("STUDENT_NON-CREAMY_LAYER"));
+                        //ddl_doc.Items.Add(new ListItem("STUDENT_INCOME_CERTIFICATE"));
                     }
 
 
                     if ((ds1.Tables[0].Rows[0]["Category"].ToString()).Contains("EBC") || (ds1.Tables[0].Rows[0]["Category"].ToString()).Contains("SEBC") || (ds1.Tables[0].Rows[0]["Category"].ToString()).Contains("OBC") || (ds1.Tables[0].Rows[0]["Category"].ToString()).Contains("ST") || (ds1.Tables[0].Rows[0]["Category"].ToString()).Contains("SC") || (ds1.Tables[0].Rows[0]["Category"].ToString()).Contains("NT") || (ds1.Tables[0].Rows[0]["Category"].ToString()).Contains("VJ") || (ds1.Tables[0].Rows[0]["Category"].ToString()).Contains("SBC"))
                     {
-                        ddl_doc.Items.Add(new ListItem("STUDENT_RATIONCARD"));
+                        //ddl_doc.Items.Add(new ListItem("STUDENT_RATIONCARD"));
                     }
 
 
                     if (Convert.ToBoolean(ds1.Tables[0].Rows[0]["diploma_holder"].ToString()) == true)
                     {
-                        ddl_doc.Items.Add(new ListItem("STUDENT_DIPLOMA_6_SEM"));
+                        //ddl_doc.Items.Add(new ListItem("STUDENT_DIPLOMA_6_SEM"));
                     }
 
 
                     ds = (DataSet)Session["App_data"];
                     if (Session["step5_flag"].ToString() == "True")
                     {
-
+                        string root = Request.PhysicalApplicationPath + "2025_2026_DOC/" + Session["Formno"].ToString();
+                        if (Directory.Exists(root))
+                        {
+                            ddl_doc.SelectedIndex = 1;
+                            ddl_doc_SelectedIndexChanged(sender, e);
+                        }
                     }
                     else
                     {
@@ -534,7 +539,17 @@ public partial class Document_upload : System.Web.UI.Page
             lblimp.Attributes.Add("style", "display:none;color:red");
             div_image.Attributes.Add("style", "display:none");
             div_pdf.Attributes.Add("style", "display:none");
-            imgphoto.ImageUrl = "";
+
+            string root = Request.PhysicalApplicationPath + "2025_2026_DOC/" + Session["Formno"].ToString();
+            if (Directory.Exists(root))
+            {
+                imgphoto.ImageUrl = "~/images/fileuploaded_success.png";
+            }
+            else
+            {
+                imgphoto.ImageUrl = "~/images/myprofile.png";
+            }
+            
 
         }
         else

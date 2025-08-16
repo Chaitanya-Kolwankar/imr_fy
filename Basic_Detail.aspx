@@ -2,8 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 
-    <%--    <link rel="stylesheet" href="css/bootstrap.min.css" />
-     <link rel="stylesheet" type="text/css" href="DatePicker/bootstrap.css"/>--%>
+       <link rel="stylesheet" href="css/bootstrap.min.css" />
+     <%-- <link rel="stylesheet" type="text/css" href="DatePicker/bootstrap.css"/>--%>
     <link rel="stylesheet" type="text/css" href="DatePicker/Style.css" />
     <link href="css/jquery.datetimepicker.css" rel="stylesheet" />
     <%-- <link href="css/jquery.datetimepicker.css" rel="stylesheet" />--%>
@@ -34,7 +34,58 @@
      </script>--%>
     <%--<script src="js/jquery-1.3.1.min.js"></script>--%>
     <script src="js/jquery.datetimepicker.js"></script>
+     <style>
+    .stepwizard-step p {
+        margin-top: 10px !important;
+    }
 
+    .stepwizard-row {
+        display: table-row;
+    }
+
+    .stepwizard {
+        display: table;
+        width: 100%;
+        position: relative;
+    }
+
+    .stepwizard-step button[disabled] {
+        opacity: 1 !important;
+        filter: alpha(opacity=100) !important;
+    }
+
+    .stepwizard-row:before {
+        top: 14px;
+        bottom: 0;
+        position: absolute;
+        content: " ";
+        width: 100%;
+        height: 1px;
+        background-color: #ccc;
+        z-order: 0;
+    }
+
+    .stepwizard-step {
+        display: table-cell;
+        text-align: center;
+        position: relative;
+    }
+
+    .btn-circle {
+        width: 30px !important;
+        height: 30px !important;
+        text-align: center !important;
+        padding: 6px 0 !important;
+        font-size: 12px !important;
+        line-height: 1.428571429 !important;
+        border-radius: 15px !important;
+    }
+
+
+    .well{
+             margin-bottom:0;
+         }
+</style>
 
 
     <script>

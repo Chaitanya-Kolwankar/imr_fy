@@ -159,6 +159,7 @@
                         <asp:ListItem>STUDENT_SIGNATURE</asp:ListItem>
                         <asp:ListItem>STUDENT_AADHARCARD</asp:ListItem>
                         <asp:ListItem>STUDENT_PAN</asp:ListItem>
+                        <asp:ListItem>BANK_PASSBOOK_COPY</asp:ListItem>
                         <asp:ListItem>STUDENT_OTHER_DOCUMENT</asp:ListItem>
 
                     </asp:DropDownList>
@@ -185,7 +186,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <center>
-                                <asp:Image ID="imgphoto" runat="server" CssClass="form-control img-responsive"  ImageUrl="" Visible="true" ToolTip="Photo"
+                                <asp:Image ID="imgphoto" runat="server" CssClass="form-control img-responsive"  ImageUrl="~/images/myprofile.png" Visible="true" ToolTip="Photo"
                                             Height="200px" Width="200px"></asp:Image>
                                                                         </center>
                                 </div>
@@ -193,12 +194,12 @@
                             <br />
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <asp:FileUpload ID="filephoto" TabIndex="1" CssClass="form-control" runat="server" accept="image/*" ToolTip="Upload Photo" onchange="previewImage(this)"></asp:FileUpload>
+                                    <asp:FileUpload ID="filephoto" TabIndex="1" CssClass="form-control btn-info" runat="server" accept="image/*" ToolTip="Upload Photo" onchange="previewImage(this)"></asp:FileUpload>
                                 </div>
                                 <asp:HiddenField ID="hdn_isSpecialForm" runat="server" Value="false" />
 
                                 <div class="col-lg-6">
-                                    <asp:Button ID="btnuploadphoto" TabIndex="2" runat="server" OnClick="btnuploadphoto_Click" Text="Upload Photo" class="form-control btn-default"></asp:Button>
+                                    <asp:Button ID="btnuploadphoto" TabIndex="2" runat="server" OnClick="btnuploadphoto_Click" Text="Upload Photo" class="form-control btn-info"></asp:Button>
                                 </div>
                             </div>
 

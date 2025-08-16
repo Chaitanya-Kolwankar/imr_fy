@@ -142,6 +142,49 @@
             background-color: #fffaf0;
             border-color: #00bfff;
         }
+
+        body {
+            text-transform: uppercase !important;
+        }
+
+
+        input[type="text"] {
+            text-transform: uppercase;
+        }
+
+        input[type="submit"], input[type="button"] {
+            text-transform: uppercase;
+        }
+
+        select {
+            text-transform: uppercase !important;
+        }
+
+            select option {
+                text-transform: uppercase;
+            }
+
+        table {
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 480px) {
+            .stepwizard-step p {
+                font-size: 8px !important;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .stepwizard-step p {
+                font-size: 7px !important;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .stepwizard-step p {
+                font-size: 6px !important;
+            }
+        }
     </style>
     <%-- <script type="text/javascript">
         $(function () {

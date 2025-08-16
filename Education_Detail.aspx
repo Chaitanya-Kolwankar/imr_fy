@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <style>
         .topMargin {
@@ -12,9 +12,9 @@
     </style>
 
 
-     <style>
+    <style>
         .stepwizard-step p {
-            margin-top: 10px;
+            margin-top: 10px !important;
         }
 
         .stepwizard-row {
@@ -50,19 +50,19 @@
         }
 
         .btn-circle {
-            width: 30px;
-            height: 30px;
-            text-align: center;
-            padding: 6px 0;
-            font-size: 12px;
-            line-height: 1.428571429;
-            border-radius: 15px;
+            width: 30px !important;
+            height: 30px !important;
+            text-align: center !important;
+            padding: 6px 0 !important;
+            font-size: 12px !important;
+            line-height: 1.428571429 !important;
+            border-radius: 15px !important;
         }
 
 
-        .well{
-                 margin-bottom:0;
-             }
+        .well {
+            margin-bottom: 0;
+        }
     </style>
 
     <script>
@@ -250,7 +250,7 @@
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">State <span style="COLOR: #ff3333">*</span> </span>
+                                            <span style="font-family: Verdana">State <span style="color: #ff3333">*</span> </span>
                                             <br />
                                             <asp:DropDownList ID="ddl10StateBoard" TabIndex="1" runat="server" ToolTip="State" CssClass="form-control" AutoPostBack="True" OnSelectedIndexChanged="ddl10StateBoard_SelectedIndexChanged">
                                                 <asp:ListItem>--Select--</asp:ListItem>
@@ -292,21 +292,28 @@
                                             </asp:DropDownList>
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Board <span style="COLOR: #ff3333">*</span> </span>
-                                            <br />
-                                            <asp:DropDownList ID="ddl10board" TabIndex="2" CssClass="form-control" runat="server" ToolTip="Select Board">
-                                                <asp:ListItem>--Select--</asp:ListItem>
-                                            </asp:DropDownList>
+                                            <div class="row">
+                                                <div class="col-lg-12" runat="server" id="div10ddl">
+                                                    <span style="font-family: Verdana">Board <span style="color: #ff3333">*</span> </span>
+                                                    <br />
+                                                    <asp:DropDownList ID="ddl10board" TabIndex="2" CssClass="form-control" runat="server" ToolTip="Select Board" OnSelectedIndexChanged="ddl10board_SelectedIndexChanged" AutoPostBack="true">
+                                                    </asp:DropDownList>
+                                                </div>
+                                                <div class="col-lg-6" runat="server" id="div10board" visible="false">
+                                                    <br />
+                                                    <asp:TextBox runat="server" type="text" name="txt10board" ID="txt10board" class="form-control" placeholder="Board Name" TabIndex="3" MaxLength="255"></asp:TextBox>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Institute Name</span>
+                                            <span style="font-family: Verdana">Institute Name</span>
                                             <br />
                                             <asp:TextBox runat="server" type="text" name="txt10institutename" ID="txt10institutename" class="form-control" placeholder="Institute Name" TabIndex="3" oninput="allowOnlyAlphabetschool(event)" MaxLength="80"></asp:TextBox>
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Institute place</span>
+                                            <span style="font-family: Verdana">Institute place</span>
                                             <br />
                                             <asp:TextBox runat="server" type="text" name="txt10instituteplace" ID="txt10instituteplace" class="form-control" placeholder="Institute place" TabIndex="4" MaxLength="80" oninput="blockInvalidChars(event)"></asp:TextBox>
                                         </div>
@@ -314,7 +321,7 @@
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
                                             <div class="form-inline">
-                                                <span style="FONT-FAMILY: Verdana">First Attempt<span style="COLOR: #ff3333">*</span>
+                                                <span style="font-family: Verdana">First Attempt<span style="color: #ff3333">*</span>
                                                     <asp:RadioButton onblur="OnBlur(this);" ID="rbt10YesAttempt" onfocus="OnFocus(this);" Checked="true" CssClass="form-control" TabIndex="5" runat="server" Text="Yes" GroupName="Sattempt" ToolTip="FirstAttempt"></asp:RadioButton>
                                                     <asp:RadioButton onblur="OnBlur(this);" ID="rbt10NoAttempt" onfocus="OnFocus(this);" CssClass="form-control" TabIndex="6" runat="server" Text="No" GroupName="Sattempt" ToolTip="FirstAttempt"></asp:RadioButton>
                                             </div>
@@ -323,14 +330,14 @@
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Passing Year <span style="COLOR: #ff3333">*</span>&nbsp;</span>
+                                            <span style="font-family: Verdana">Passing Year <span style="color: #ff3333">*</span>&nbsp;</span>
                                             <br />
                                             <asp:DropDownList onblur="OnBlur(this);" ID="ddl10passyear" CssClass="form-control" onfocus="OnFocus(this);" TabIndex="7" runat="server" ToolTip="Year">
                                                 <asp:ListItem>--Select--</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Passing Month <span style="COLOR: #ff3333">*</span>&nbsp;</span>
+                                            <span style="font-family: Verdana">Passing Month <span style="color: #ff3333">*</span>&nbsp;</span>
                                             <br />
                                             <asp:DropDownList onblur="OnBlur(this);" ID="ddl10passmonth" CssClass=" form-control" onfocus="OnFocus(this);" TabIndex="8" runat="server" ToolTip="Month">
                                                 <asp:ListItem>--Select--</asp:ListItem>
@@ -351,24 +358,24 @@
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Total Marks Obtained <span style="COLOR: #ff3333">*</span>&nbsp;</span>
+                                            <span style="font-family: Verdana">Total Marks Obtained <span style="color: #ff3333">*</span>&nbsp;</span>
                                             <br />
-                                            <asp:TextBox runat="server" type="text" name="txt10marksobtained" ID="txt10marksobtained" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Total Marks Obtained" MaxLength="4" TabIndex="9"  oncopy="return false" onpaste="return false"></asp:TextBox>
+                                            <asp:TextBox runat="server" type="text" name="txt10marksobtained" ID="txt10marksobtained" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Total Marks Obtained" MaxLength="4" TabIndex="9" oncopy="return false" onpaste="return false"></asp:TextBox>
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Out of Marks <span style="COLOR: #ff3333">*</span>&nbsp;</span>
+                                            <span style="font-family: Verdana">Out of Marks <span style="color: #ff3333">*</span>&nbsp;</span>
                                             <br />
-                                            <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" name="txt10totalmarks" ID="txt10totalmarks" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Out of Marks " MaxLength="4" TabIndex="10"  oncopy="return false" onpaste="return false"></asp:TextBox>
+                                            <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" name="txt10totalmarks" ID="txt10totalmarks" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Out of Marks " MaxLength="4" TabIndex="10" oncopy="return false" onpaste="return false"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Grade Obtained</span>
+                                            <span style="font-family: Verdana">Grade/Percentage Obtained</span>
                                             <br />
-                                            <asp:TextBox runat="server" type="text" onkeypress="return AllowOnlyPlus(event);" onblur="OnBlur(this);" name="txt_grade" ID="txt10_grade" class="uppercase form-control" placeholder="Grade Obtained" TabIndex="11" MaxLength="3"></asp:TextBox>
+                                            <asp:TextBox runat="server" type="text" onkeypress="return allowNumAlpha(event);" onblur="OnBlur(this);" name="txt_grade" ID="txt10_grade" class="uppercase form-control" placeholder="Grade Obtained" TabIndex="11" MaxLength="3"></asp:TextBox>
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Seat No <span style="COLOR: #ff3333">*</span>&nbsp;</span>
+                                            <span style="font-family: Verdana">Seat No </span>
                                             <br />
                                             <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" name="txt10seatno" ID="txt10seatno" class="uppercase form-control" placeholder="Seat No" TabIndex="12" oninput="allowNumAlpha(event)" MaxLength="10"></asp:TextBox>
                                         </div>
@@ -406,7 +413,7 @@
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">State <span style="COLOR: #ff3333">*</span> </span>
+                                            <span style="font-family: Verdana">State <span style="color: #ff3333">*</span> </span>
                                             <br />
                                             <asp:DropDownList ID="ddl12StateBoard" TabIndex="14" CssClass="form-control" runat="server" ToolTip="State" AutoPostBack="True" OnSelectedIndexChanged="ddl12StateBoard_SelectedIndexChanged">
                                                 <asp:ListItem>--Select--</asp:ListItem>
@@ -448,21 +455,29 @@
                                             </asp:DropDownList>
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Board <span style="COLOR: #ff3333">*</span>&nbsp </span>
-                                            <br />
-                                            <asp:DropDownList ID="ddl12board" CssClass="form-control" TabIndex="15" runat="server" ToolTip="Select Board">
-                                                <asp:ListItem>--Select--</asp:ListItem>
-                                            </asp:DropDownList>
+                                            <div class="row">
+                                                <div class="col-lg-6" runat="server" id="div12ddl">
+                                                    <span style="font-family: Verdana">Board <span style="color: #ff3333">*</span> </span>
+                                                    <br />
+                                                    <asp:DropDownList ID="ddl12board" CssClass="form-control" TabIndex="15" runat="server" ToolTip="Select Board" OnSelectedIndexChanged="ddl12board_SelectedIndexChanged" AutoPostBack="true">
+                                                        <asp:ListItem>--Select--</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                                <div class="col-lg-6" runat="server" id="div12board" visible="false">
+                                                    <br />
+                                                    <asp:TextBox runat="server" type="text" name="txt12board" ID="txt12board" class="form-control" placeholder="Institute Name" TabIndex="3" MaxLength="255"></asp:TextBox>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Institute Name/College Name<span style="COLOR: #ff3333">*</span>&nbsp</span>
+                                            <span style="font-family: Verdana">Institute Name/College Name<span style="color: #ff3333">*</span>&nbsp</span>
                                             <br />
                                             <asp:TextBox runat="server" type="text" name="txt12institutename" ID="txt12institutename" class="uppercse form-control" placeholder="Institute Name/College Name" TabIndex="16" oninput="allowOnlyAlphabetschool(event)" MaxLength="80"></asp:TextBox>
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Institute place<span style="COLOR: #ff3333">*</span>&nbsp</span>
+                                            <span style="font-family: Verdana">Institute place<span style="color: #ff3333">*</span>&nbsp</span>
                                             <br />
                                             <asp:TextBox runat="server" type="text" name="txt12instituteplace" ID="txt12instituteplace" class="upprcase form-control" placeholder="Institute place" TabIndex="17" MaxLength="80" oninput="blockInvalidChars(event)"></asp:TextBox>
                                         </div>
@@ -470,7 +485,7 @@
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
                                             <div class="form-inline">
-                                                <span style="FONT-FAMILY: Verdana">First Attempt<span style="COLOR: #ff3333">*</span>&nbsp</span>
+                                                <span style="font-family: Verdana">First Attempt<span style="color: #ff3333">*</span>&nbsp</span>
                                                 <asp:RadioButton onblur="OnBlur(this);" ID="rbt12HYes" onfocus="OnFocus(this);" Checked="true" CssClass="form-control" TabIndex="18" runat="server" Text="Yes" AutoPostBack="True" GroupName="attempt" ToolTip="FirstAttempt"></asp:RadioButton>
                                                 <asp:RadioButton onblur="OnBlur(this);" ID="rbt12Hno" onfocus="OnFocus(this);" CssClass="form-control" TabIndex="19" runat="server" Text="No" AutoPostBack="True" GroupName="attempt" ToolTip="FirstAttempt"></asp:RadioButton>
                                             </div>
@@ -479,14 +494,14 @@
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Passing Year <span style="COLOR: #ff3333">*</span>&nbsp;</span>
+                                            <span style="font-family: Verdana">Passing Year <span style="color: #ff3333">*</span>&nbsp;</span>
                                             <br />
                                             <asp:DropDownList onblur="OnBlur(this);" ID="dd12passyear" CssClass="form-control" onfocus="OnFocus(this);" TabIndex="21" runat="server" Font-Size="10pt" Font-Names="Arial Narrow" Width="106px" ToolTip="Year">
                                                 <asp:ListItem>Year</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Passing Month <span style="COLOR: #ff3333">*</span>&nbsp;</span>
+                                            <span style="font-family: Verdana">Passing Month <span style="color: #ff3333">*</span>&nbsp;</span>
                                             <br />
                                             <asp:DropDownList onblur="OnBlur(this);" ID="dd12passmonth" onfocus="OnFocus(this);" CssClass="uppercase form-control" TabIndex="22" runat="server" Font-Size="10pt" Font-Names="Verdana" Width="106px" ToolTip="Month">
                                                 <asp:ListItem>Month</asp:ListItem>
@@ -507,26 +522,26 @@
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Total Marks Obtained<span style="COLOR: #ff3333">*</span>&nbsp</span>
+                                            <span style="font-family: Verdana">Total Marks Obtained<span style="color: #ff3333">*</span>&nbsp</span>
                                             <br />
-                                            <asp:TextBox runat="server" type="text" name="txt12marksobtained" ID="txt12marksobtained" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Total Marks Obtained" onblur="OnBlur(this);" onfocus="OnFocus(this);" MaxLength="4" TabIndex="23"  oncopy="return false" onpaste="return false"></asp:TextBox>
+                                            <asp:TextBox runat="server" type="text" name="txt12marksobtained" ID="txt12marksobtained" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Total Marks Obtained" onblur="OnBlur(this);" onfocus="OnFocus(this);" MaxLength="4" TabIndex="23" oncopy="return false" onpaste="return false"></asp:TextBox>
 
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Out of Marks<span style="COLOR: #ff3333">*</span>&nbsp</span>
+                                            <span style="font-family: Verdana">Out of Marks<span style="color: #ff3333">*</span>&nbsp</span>
                                             <br />
-                                            <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" onfocus="OnFocus(this);" TabIndex="24" name="txt12totalmarks" ID="txt12totalmarks" class="uppercase form-control" onkeypress="CheckNumeric(event);" MaxLength="4" placeholder="Out of Marks "  oncopy="return false" onpaste="return false"></asp:TextBox>
+                                            <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" onfocus="OnFocus(this);" TabIndex="24" name="txt12totalmarks" ID="txt12totalmarks" class="uppercase form-control" onkeypress="CheckNumeric(event);" MaxLength="4" placeholder="Out of Marks " oncopy="return false" onpaste="return false"></asp:TextBox>
 
                                         </div>
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Grade Obtained</span>
+                                            <span style="font-family: Verdana">Grade/Percentage  Obtained</span>
                                             <br />
-                                            <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" onkeypress="return AllowOnlyPlus(event);" name="txt12grade" ID="txt12grade" class="uppercase form-control" placeholder="Grade Obtained" TabIndex="25" MaxLength="3"></asp:TextBox>
+                                            <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" onkeypress="return allowNumAlpha(event);" name="txt12grade" ID="txt12grade" class="uppercase form-control" placeholder="Grade Obtained" TabIndex="25" MaxLength="3"></asp:TextBox>
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Seat No<span style="COLOR: #ff3333">*</span>&nbsp</span>
+                                            <span style="font-family: Verdana">Seat No</span>
                                             <br />
                                             <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" name="txt12seatno" ID="txt12seatno" class="uppercase form-control" placeholder="Seat No" TabIndex="26" oninput="allowNumAlpha(event)" MaxLength="10"></asp:TextBox>
                                         </div>
@@ -563,7 +578,7 @@
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Graduation Course<span style="COLOR: #ff3333">*</span> </span>
+                                            <span style="font-family: Verdana">Graduation Course<span style="color: #ff3333">*</span> </span>
                                         </div>
                                         <div class="col-lg-6">
                                             <asp:TextBox runat="server" type="text" ID="txtGraduationCourse" class="form-control" placeholder="Graduation Course" TabIndex="56" onkeypress="return allowAlphaSpace(event);" oninput="sanitizeAlphaSpace(this);"></asp:TextBox>
@@ -572,7 +587,7 @@
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">State <span style="COLOR: #ff3333">*</span> </span>
+                                            <span style="font-family: Verdana">State <span style="color: #ff3333">*</span> </span>
                                             <br />
                                             <asp:DropDownList ID="ddlTYstate" TabIndex="56" CssClass="form-control" runat="server" ToolTip="State" AutoPostBack="True" OnSelectedIndexChanged="ddlTYstate_SelectedIndexChanged">
                                                 <asp:ListItem>--SELECT--</asp:ListItem>
@@ -614,7 +629,7 @@
                                             </asp:DropDownList>
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">University <span style="COLOR: #ff3333">*</span> </span>
+                                            <span style="font-family: Verdana">University <span style="color: #ff3333">*</span> </span>
                                             <br />
                                             <asp:TextBox runat="server" type="text" name="txt_graduation_university" ID="txt_graduation_university" class="form-control" placeholder="University Name" TabIndex="58" oninput="allowOnlyAlphabetschool(event)"></asp:TextBox>
                                             <%--<asp:DropDownList ID="ddlTYboard" CssClass="form-control" TabIndex="57" runat="server" ToolTip="Select Board" >
@@ -624,18 +639,18 @@
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Institute Name/College Name<span style="COLOR: #ff3333">*</span> </span>
+                                            <span style="font-family: Verdana">Institute Name/College Name<span style="color: #ff3333">*</span> </span>
                                             <asp:TextBox runat="server" type="text" name="txtTYinstitutename" ID="txtTYinstitutename" class="form-control" placeholder="Institute Name/College Name" TabIndex="58" oninput="allowOnlyAlphabetschool(event)"></asp:TextBox>
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Institute place<span style="COLOR: #ff3333">*</span> </span>
+                                            <span style="font-family: Verdana">Institute place<span style="color: #ff3333">*</span> </span>
                                             <asp:TextBox runat="server" type="text" name="txtTYinstituteplace" ID="txtTYinstituteplace" class="form-control" placeholder="Institute place" TabIndex="59" oninput="blockInvalidChars(event)"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-12">
                                             <div class="form-inline">
-                                                <span style="FONT-FAMILY: Verdana">First Attempt<span style="COLOR: #ff3333">*</span>
+                                                <span style="font-family: Verdana">First Attempt<span style="color: #ff3333">*</span>
                                                     <asp:RadioButton ID="rbtTYyes" CssClass="form-control" TabIndex="60" runat="server" Checked="true" Text="Yes" AutoPostBack="True" GroupName="attempt" ToolTip="FirstAttempt"></asp:RadioButton>
                                                     <asp:RadioButton ID="rbtTYno" CssClass="form-control" TabIndex="61" runat="server" Text="No" AutoPostBack="True" GroupName="attempt" ToolTip="FirstAttempt"></asp:RadioButton>
                                             </div>
@@ -644,14 +659,14 @@
 
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Passing Year <span style="COLOR: #ff3333">*</span>&nbsp;</span>
+                                            <span style="font-family: Verdana">Passing Year <span style="color: #ff3333">*</span>&nbsp;</span>
                                             <br />
                                             <asp:DropDownList onblur="OnBlur(this);" ID="ddlTYpassyear" CssClass="form-control" onfocus="OnFocus(this);" TabIndex="62" runat="server" Font-Size="10pt" Font-Names="Arial Narrow" Width="106px" ToolTip="Year">
                                                 <asp:ListItem>Year</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Passing Month <span style="COLOR: #ff3333">*</span>&nbsp;</span>
+                                            <span style="font-family: Verdana">Passing Month <span style="color: #ff3333">*</span>&nbsp;</span>
                                             <br />
                                             <asp:DropDownList onblur="OnBlur(this);" ID="ddlTYmonth" onfocus="OnFocus(this);" CssClass="form-control" TabIndex="63" runat="server" Font-Size="10pt" Font-Names="Verdana" Width="106px" ToolTip="Month">
                                                 <asp:ListItem>Month</asp:ListItem>
@@ -672,25 +687,25 @@
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Total Marks Obtained <span style="COLOR: #ff3333">*</span> </span>
+                                            <span style="font-family: Verdana">Total Marks Obtained <span style="color: #ff3333">*</span> </span>
                                             <br />
-                                            <asp:TextBox runat="server" type="text" name="txtTYmarksobtained" ID="txtTYmarksobtained" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Total Marks Obtained" onblur="OnBlur(this);" onfocus="OnFocus(this);" TabIndex="64" MaxLength="3"  oncopy="return false" onpaste="return false"></asp:TextBox>
+                                            <asp:TextBox runat="server" type="text" name="txtTYmarksobtained" ID="txtTYmarksobtained" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Total Marks Obtained" onblur="OnBlur(this);" onfocus="OnFocus(this);" TabIndex="64" MaxLength="3" oncopy="return false" onpaste="return false"></asp:TextBox>
 
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Out of Marks <span style="COLOR: #ff3333">*</span> </span>
+                                            <span style="font-family: Verdana">Out of Marks <span style="color: #ff3333">*</span> </span>
                                             <br />
-                                            <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" onfocus="OnFocus(this);" TabIndex="65" name="txtTYtotalmarks" ID="txtTYtotalmarks" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Out of Marks" MaxLength="3"  oncopy="return false" onpaste="return false"></asp:TextBox>
+                                            <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" onfocus="OnFocus(this);" TabIndex="65" name="txtTYtotalmarks" ID="txtTYtotalmarks" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Out of Marks" MaxLength="3" oncopy="return false" onpaste="return false"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Grade Obtained<span style="COLOR: #ff3333"></span> </span>
+                                            <span style="font-family: Verdana">Grade/Percentage Obtained<span style="color: #ff3333"></span> </span>
                                             <br />
-                                            <asp:TextBox runat="server" type="text" onkeypress="return AllowOnlyPlus(event);" onblur="OnBlur(this);" name="txtTYgrade" ID="txtTYgrade" class="uppercase form-control" placeholder="Grade Obtained" TabIndex="66" MaxLength="3"></asp:TextBox>
+                                            <asp:TextBox runat="server" type="text" onkeypress="return allowNumAlpha(event);" onblur="OnBlur(this);" name="txtTYgrade" ID="txtTYgrade" class="uppercase form-control" placeholder="Grade Obtained" TabIndex="66" MaxLength="3"></asp:TextBox>
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Seat No<span style="COLOR: #ff3333">*</span> </span>
+                                            <span style="font-family: Verdana">Seat No </span>
                                             <br />
                                             <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" name="txtTYseatno" ID="txtTYseatno" class="uppercase form-control" placeholder="Seat No" TabIndex="67" oninput="allowNumAlpha(event)" MaxLength="10"></asp:TextBox>
                                         </div>
@@ -706,7 +721,41 @@
                             </div>
                         </div>
 
-
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <asp:Label ID="Label2" runat="server" Text="Work Experience (if applicable)"></asp:Label>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <span style="font-family: Verdana">Experience</span>
+                                            <asp:DropDownList ID="ddl_Experience" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddl_Experience_SelectedIndexChanged" AutoPostBack="true">
+                                                <asp:ListItem Text="--Select--" Value=""></asp:ListItem>
+                                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
+                                                <asp:ListItem Text="2" Value="2"></asp:ListItem>
+                                                <asp:ListItem Text="3" Value="3"></asp:ListItem>
+                                                <asp:ListItem Text="4" Value="4"></asp:ListItem>
+                                                <asp:ListItem Text="5" Value="5"></asp:ListItem>
+                                                <asp:ListItem Text="6" Value="6"></asp:ListItem>
+                                                <asp:ListItem Text="7" Value="7"></asp:ListItem>
+                                                <asp:ListItem Text="8" Value="8"></asp:ListItem>
+                                                <asp:ListItem Text="9" Value="9"></asp:ListItem>
+                                                <asp:ListItem Text="10+" Value="10+"></asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <span style="font-family: Verdana">Designation</span>
+                                            <asp:TextBox runat="server" type="text" name="txt_Designation" ID="txt_Designation" class="form-control" onkeypress="allowUniversityChars(event);" placeholder="Designation"></asp:TextBox>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <span style="font-family: Verdana">Company Name</span>
+                                            <asp:TextBox runat="server" type="text" name="txt_percentile" ID="txt_cmpn_name" class="form-control" onkeypress="allowUniversityChars(event);" placeholder="Company Name"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-lg-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -716,53 +765,34 @@
 
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Exam Type<span style="COLOR: #ff3333">*</span>&nbsp</span>
+                                            <span style="font-family: Verdana">Exam Type<span style="color: #ff3333">*</span>&nbsp</span>
                                             <br />
                                             <asp:DropDownList ID="ddl_examcet_type" runat="server" CssClass="form-control">
                                                 <asp:ListItem>--Select--</asp:ListItem>
-                                                <asp:ListItem>DTE-CET</asp:ListItem>
+                                                <asp:ListItem>MAH-CET</asp:ListItem>
                                                 <asp:ListItem>CAT</asp:ListItem>
                                                 <asp:ListItem>MAT</asp:ListItem>
                                                 <asp:ListItem>XAT</asp:ListItem>
                                                 <asp:ListItem>GMAT</asp:ListItem>
                                                 <asp:ListItem>CMAT</asp:ListItem>
                                                 <asp:ListItem>ATMA</asp:ListItem>
-                                                <asp:ListItem>AMMI CET</asp:ListItem>
                                                 <asp:ListItem>OTHERS</asp:ListItem>
                                             </asp:DropDownList>
                                             <%--                                            <asp:TextBox runat="server" type="text" name="txtFYinstitutename" ID="TextBox1" class="form-control" Text="VIVA Institute of Management and Research" placeholder="Institute Name"  ></asp:TextBox>--%>
                                         </div>
-                                       <%-- <div class="col-lg-6">
+                                        <%-- <div class="col-lg-6">
                                             <span style="FONT-FAMILY: Verdana">Marks Obtained<span style="COLOR: #ff3333">*</span>&nbsp</span>
                                             <br />
                                             <asp:TextBox runat="server" type="text" name="txt_cet_mks_obt" ID="txt_cet_mks_obt" class="form-control" onkeypress="CheckNumeric(event);" placeholder="Marks Obtained"></asp:TextBox>
                                         </div>--%>
-                                           <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Percentile<span style="COLOR: #ff3333">*</span>&nbsp</span>
+                                        <div class="col-lg-6">
+                                            <span style="font-family: Verdana">Percentile<span style="color: #ff3333">*</span>&nbsp</span>
 
                                             <asp:TextBox runat="server" type="text" name="txt_percentile" ID="txt_percentile" class="form-control" onkeypress="CheckNumeric(event);" placeholder="Entrance Exam Percentage" MaxLength="3"></asp:TextBox>
                                         </div>
                                     </div>
-                                    <div class="row topMargin">
-                                      <%--  <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Marks Out of<span style="COLOR: #ff3333">*</span>&nbsp</span>
+                                    <br />
 
-                                            <asp:TextBox runat="server" type="text" name="txt_percentile" ID="txt_cet_mks_outof" class="form-control" onkeypress="CheckNumeric(event);" placeholder="Marks Out of"></asp:TextBox>
-                                        </div>--%>
-                                      
-                                    </div>
-                                   <%-- <div class="row">
-                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana"> Entrance Exam Password<span style="COLOR: #ff3333">*</span>&nbsp</span>
-                                            <br />
-                                            <asp:TextBox runat="server" type="text" name="txt_entrancepasswd" ID="txt_entrancepasswd" class="form-control"    placeholder="ENTRANCE EXAM Password"></asp:TextBox>
-                                        </div>
-                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">ENTRANCE EXAM ROLL NO<span style="COLOR: #ff3333">*</span>&nbsp</span>
-                                            <br />
-                                            <asp:TextBox runat="server" type="text" name="txt_entrance_rollno" ID="txt_entrance_rollno" class="form-control"  placeholder="ENTRANCE EXAM ROLL NO"></asp:TextBox>
-                                        </div>
-                                    </div>--%>
                                     <div class="row" style="padding: 10pt;">
                                         <div class="col-lg-6">
                                             <asp:Button ID="btn_graduation_back" runat="server" Text="Back" class="btn btn-primary btn-block topMargin" OnClick="btn_graduation_back_Click" />
@@ -778,6 +808,7 @@
                             </div>
                         </div>
 
+
                     </div>
 
                     <%--Post Graduation--%>
@@ -790,7 +821,7 @@
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Post-Graduation Course<span style="COLOR: #ff3333">*</span> </span>
+                                            <span style="font-family: Verdana">Post-Graduation Course<span style="color: #ff3333">*</span> </span>
                                         </div>
                                         <div class="col-lg-6">
                                             <asp:TextBox runat="server" type="text" ID="txt_postGraduate_course" class="form-control" placeholder="Post-Graduation Course" TabIndex="56" oninput="blockInvalidChars(event)" MaxLength="30"></asp:TextBox>
@@ -799,7 +830,7 @@
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">State <span style="COLOR: #ff3333">*</span> </span>
+                                            <span style="font-family: Verdana">State <span style="color: #ff3333">*</span> </span>
                                             <br />
                                             <%--  --%>
                                             <asp:DropDownList ID="ddl_pg_state" TabIndex="56" CssClass="form-control" runat="server" ToolTip="State" AutoPostBack="True" OnSelectedIndexChanged="ddl_pg_state_SelectedIndexChanged">
@@ -843,7 +874,7 @@
                                             <%--  --%>
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">University <span style="COLOR: #ff3333">*</span> </span>
+                                            <span style="font-family: Verdana">University <span style="color: #ff3333">*</span> </span>
                                             <br />
                                             <asp:TextBox runat="server" type="text" name="txt_pg_university" ID="txt_pg_university" class="form-control" placeholder="University Name" TabIndex="58" MaxLength="30" oninput="allowUniversityChars(event);"></asp:TextBox>
 
@@ -854,18 +885,18 @@
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Institute Name/College Name<span style="COLOR: #ff3333">*</span> </span>
+                                            <span style="font-family: Verdana">Institute Name/College Name<span style="color: #ff3333">*</span> </span>
                                             <asp:TextBox runat="server" type="text" name="txt_pg_institute_name" ID="txt_pg_institute_name" class="form-control" placeholder="Institute Name/College Name" TabIndex="58" oninput="allowOnlyAlphabetschool(event)" MaxLength="30"></asp:TextBox>
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Institute place<span style="COLOR: #ff3333">*</span> </span>
+                                            <span style="font-family: Verdana">Institute place<span style="color: #ff3333">*</span> </span>
                                             <asp:TextBox runat="server" type="text" name="txt_pg_institute_place" ID="txt_pg_institute_place" class="form-control" placeholder="Institute place" TabIndex="59" oninput="blockInvalidChars(event)" MaxLength="40"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-12">
                                             <div class="form-inline">
-                                                <span style="FONT-FAMILY: Verdana">First Attempt<span style="COLOR: #ff3333">*</span>
+                                                <span style="font-family: Verdana">First Attempt<span style="color: #ff3333">*</span>
                                                     <asp:RadioButton ID="rbtPgYes" CssClass="form-control" TabIndex="60" runat="server" Checked="true" Text="Yes" AutoPostBack="True" GroupName="attempt" ToolTip="FirstAttempt"></asp:RadioButton>
                                                     <asp:RadioButton ID="rbtPgNo" CssClass="form-control" TabIndex="61" runat="server" Text="No" AutoPostBack="True" GroupName="attempt" ToolTip="FirstAttempt"></asp:RadioButton>
                                             </div>
@@ -874,14 +905,14 @@
 
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Passing Year <span style="COLOR: #ff3333">*</span>&nbsp;</span>
+                                            <span style="font-family: Verdana">Passing Year <span style="color: #ff3333">*</span>&nbsp;</span>
                                             <br />
                                             <asp:DropDownList onblur="OnBlur(this);" ID="ddl_pg_passing_year" CssClass="form-control" onfocus="OnFocus(this);" TabIndex="62" runat="server" Font-Size="10pt" Font-Names="Arial Narrow" Width="106px" ToolTip="Year">
                                                 <asp:ListItem>Year</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Passing Month <span style="COLOR: #ff3333">*</span>&nbsp;</span>
+                                            <span style="font-family: Verdana">Passing Month <span style="color: #ff3333">*</span>&nbsp;</span>
                                             <br />
                                             <asp:DropDownList onblur="OnBlur(this);" ID="ddl_pg_passing_month" onfocus="OnFocus(this);" CssClass="form-control" TabIndex="63" runat="server" Font-Size="10pt" Font-Names="Verdana" Width="106px" ToolTip="Month">
                                                 <asp:ListItem>Month</asp:ListItem>
@@ -902,25 +933,25 @@
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Total Marks Obtained <span style="COLOR: #ff3333">*</span> </span>
+                                            <span style="font-family: Verdana">Total Marks Obtained <span style="color: #ff3333">*</span> </span>
                                             <br />
                                             <asp:TextBox runat="server" type="text" name="txt_pg_tot_mks_obt" ID="txt_pg_tot_mks_obt" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Total Marks Obtained" onblur="OnBlur(this);" onfocus="OnFocus(this);" TabIndex="64" MaxLength="3"></asp:TextBox>
 
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Out of Marks <span style="COLOR: #ff3333">*</span> </span>
+                                            <span style="font-family: Verdana">Out of Marks <span style="color: #ff3333">*</span> </span>
                                             <br />
-                                            <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" onfocus="OnFocus(this);" TabIndex="65" name="txt_pg_outof_mks" ID="txt_pg_outof_mks" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Out of Marks" MaxLength="3"  oncopy="return false" onpaste="return false"></asp:TextBox>
+                                            <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" onfocus="OnFocus(this);" TabIndex="65" name="txt_pg_outof_mks" ID="txt_pg_outof_mks" class="uppercase form-control" onkeypress="CheckNumeric(event);" placeholder="Out of Marks" MaxLength="3" oncopy="return false" onpaste="return false"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Grade Obtained<span style="COLOR: #ff3333"></span> </span>
+                                            <span style="font-family: Verdana">Grade/Percentage Obtained<span style="color: #ff3333"></span> </span>
                                             <br />
-                                            <asp:TextBox runat="server" type="text" onkeypress="return AllowOnlyPlus(event);" onblur="OnBlur(this);" name="txt_pg_grade" ID="txt_pg_grade" class="uppercase form-control" placeholder="Grade Obtained" TabIndex="66" MaxLength="3"></asp:TextBox>
+                                            <asp:TextBox runat="server" type="text" onkeypress="return allowNumAlpha(event);" onblur="OnBlur(this);" name="txt_pg_grade" ID="txt_pg_grade" class="uppercase form-control" placeholder="Grade Obtained" TabIndex="66" MaxLength="3"></asp:TextBox>
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Seat No<span style="COLOR: #ff3333">*</span> </span>
+                                            <span style="font-family: Verdana">Seat No </span>
                                             <br />
                                             <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" name="txt_pg_seat" ID="txt_pg_seat" class="uppercase form-control" placeholder="Seat No" TabIndex="67" oninput="allowNumAlpha(event)" MaxLength="10"></asp:TextBox>
                                         </div>
@@ -952,19 +983,19 @@
 
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Institute Name<span style="COLOR: #ff3333">*</span>&nbsp</span>
+                                            <span style="font-family: Verdana">Institute Name<span style="color: #ff3333">*</span>&nbsp</span>
                                             <br />
                                             <asp:TextBox runat="server" type="text" name="txtFYinstitutename" ID="txtFYinstitutename" class="form-control" Text="Institute of Management and Research" placeholder="Institute Name" oninput="allowOnlyAlphabetschool(event)"></asp:TextBox>
                                         </div>
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Institute place<span style="COLOR: #ff3333">*</span>&nbsp</span>
+                                            <span style="font-family: Verdana">Institute place<span style="color: #ff3333">*</span>&nbsp</span>
                                             <br />
                                             <asp:TextBox runat="server" type="text" name="txtFYinstituteplace" Text="Virar" ID="txtFYinstituteplace" class="form-control" placeholder="Institute place" oninput="allowOnlyAlphabets(event)"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="FONT-FAMILY: Verdana">Enter University Name<span style="COLOR: #ff3333">*</span>&nbsp</span>
+                                            <span style="font-family: Verdana">Enter University Name<span style="color: #ff3333">*</span>&nbsp</span>
 
                                             <asp:TextBox runat="server" type="text" name="txt_fy_univer" ID="txt_fy_univer" Text="Mumbai University" class="form-control" placeholder="University Name" MaxLength="40"></asp:TextBox>
                                         </div>
@@ -979,7 +1010,7 @@
                                             <div class="panel-body">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <span style="FONT-FAMILY: Verdana">Sem1 SGPA<span style="COLOR: #ff3333">*</span>&nbsp;</span>
+                                                        <span style="font-family: Verdana">Sem1 SGPA<span style="color: #ff3333">*</span>&nbsp;</span>
                                                         <asp:TextBox ID="txtSem1Sgpi" runat="server" CssClass="form-control" MaxLength="6"></asp:TextBox>
 
                                                     </div>
@@ -996,14 +1027,14 @@
                                                 </div>
                                                 <div class="row topMargin">
                                                     <div class="col-lg-6">
-                                                        <span style="FONT-FAMILY: Verdana">Marks Obtain<span style="COLOR: #ff3333">*</span>&nbsp;</span>
+                                                        <span style="font-family: Verdana">Marks Obtain<span style="color: #ff3333">*</span>&nbsp;</span>
                                                         <br />
                                                         <asp:TextBox onblur="OnBlur(this);" ID="txt_sem1_mkobtain" onkeypress="CheckNumeric(event);" onfocus="OnFocus(this);" TabIndex="37" runat="server" CssClass="form-control" MaxLength="4"></asp:TextBox>
                                                     </div>
                                                     <div class="col-lg-6">
-                                                        <span style="FONT-FAMILY: Verdana">Total Marks<span style="COLOR: #ff3333">*</span>&nbsp;</span>
+                                                        <span style="font-family: Verdana">Total Marks<span style="color: #ff3333">*</span>&nbsp;</span>
                                                         <br />
-                                                        <asp:TextBox onblur="OnBlur(this);" onkeypress="CheckNumeric(event);" ID="txt_sem1_ttmks" onfocus="OnFocus(this);" TabIndex="38" runat="server" CssClass="form-control" MaxLength="4"  oncopy="return false" onpaste="return false"></asp:TextBox>
+                                                        <asp:TextBox onblur="OnBlur(this);" onkeypress="CheckNumeric(event);" ID="txt_sem1_ttmks" onfocus="OnFocus(this);" TabIndex="38" runat="server" CssClass="form-control" MaxLength="4" oncopy="return false" onpaste="return false"></asp:TextBox>
                                                     </div>
                                                 </div>
 
@@ -1022,7 +1053,7 @@
                                             <div class="panel-body">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <span style="FONT-FAMILY: Verdana">Sem2 SGPA<span style="COLOR: #ff3333">*</span>&nbsp;</span>
+                                                        <span style="font-family: Verdana">Sem2 SGPA<span style="color: #ff3333">*</span>&nbsp;</span>
                                                         <asp:TextBox ID="txtSem2Sgpi" runat="server" CssClass="form-control" MaxLength="6"></asp:TextBox>
 
                                                     </div>
@@ -1057,14 +1088,14 @@
 
 
                                                     <div class="col-lg-6">
-                                                        <span style="FONT-FAMILY: Verdana">Marks Obtain<span style="COLOR: #ff3333">*</span>&nbsp;</span>
+                                                        <span style="font-family: Verdana">Marks Obtain<span style="color: #ff3333">*</span>&nbsp;</span>
                                                         <br />
-                                                        <asp:TextBox onblur="OnBlur(this);" ID="txt_sem2_mkobtain" onkeypress="CheckNumeric(event);" onfocus="OnFocus(this);" TabIndex="37" runat="server" CssClass="form-control" MaxLength="4"  oncopy="return false" onpaste="return false"></asp:TextBox>
+                                                        <asp:TextBox onblur="OnBlur(this);" ID="txt_sem2_mkobtain" onkeypress="CheckNumeric(event);" onfocus="OnFocus(this);" TabIndex="37" runat="server" CssClass="form-control" MaxLength="4" oncopy="return false" onpaste="return false"></asp:TextBox>
                                                     </div>
                                                     <div class="col-lg-6">
-                                                        <span style="FONT-FAMILY: Verdana">Total Marks<span style="COLOR: #ff3333">*</span>&nbsp;</span>
+                                                        <span style="font-family: Verdana">Total Marks<span style="color: #ff3333">*</span>&nbsp;</span>
                                                         <br />
-                                                        <asp:TextBox onblur="OnBlur(this);" ID="txt_sem2_ttmks" onkeypress="CheckNumeric(event);" onfocus="OnFocus(this);" TabIndex="38" runat="server" CssClass="form-control" MaxLength="4"  oncopy="return false" onpaste="return false"></asp:TextBox>
+                                                        <asp:TextBox onblur="OnBlur(this);" ID="txt_sem2_ttmks" onkeypress="CheckNumeric(event);" onfocus="OnFocus(this);" TabIndex="38" runat="server" CssClass="form-control" MaxLength="4" oncopy="return false" onpaste="return false"></asp:TextBox>
                                                     </div>
                                                 </div>
 
