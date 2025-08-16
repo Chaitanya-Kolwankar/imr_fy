@@ -370,7 +370,7 @@
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="font-family: Verdana">Grade/Percentage Obtained</span>
+                                            <span style="font-family: Verdana">Grade/Percentage Obtained<span style="color: #ff3333">*</span>&nbsp;</span>
                                             <br />
                                             <asp:TextBox runat="server" type="text" onkeypress="return allowNumAlpha(event);" onblur="OnBlur(this);" name="txt_grade" ID="txt10_grade" class="uppercase form-control" placeholder="Grade Obtained" TabIndex="11" MaxLength="3"></asp:TextBox>
                                         </div>
@@ -536,7 +536,7 @@
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="font-family: Verdana">Grade/Percentage  Obtained</span>
+                                            <span style="font-family: Verdana">Grade/Percentage Obtained <span style="color: #ff3333">*</span>&nbsp</span>
                                             <br />
                                             <asp:TextBox runat="server" type="text" onblur="OnBlur(this);" onkeypress="return allowNumAlpha(event);" name="txt12grade" ID="txt12grade" class="uppercase form-control" placeholder="Grade Obtained" TabIndex="25" MaxLength="3"></asp:TextBox>
                                         </div>
@@ -700,7 +700,7 @@
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="font-family: Verdana">Grade/Percentage Obtained<span style="color: #ff3333"></span> </span>
+                                            <span style="font-family: Verdana">Grade/Percentage Obtained<span style="color: #ff3333">*</span>&nbsp;<span style="color: #ff3333"></span> </span>
                                             <br />
                                             <asp:TextBox runat="server" type="text" onkeypress="return allowNumAlpha(event);" onblur="OnBlur(this);" name="txtTYgrade" ID="txtTYgrade" class="uppercase form-control" placeholder="Grade Obtained" TabIndex="66" MaxLength="3"></asp:TextBox>
                                         </div>
@@ -946,7 +946,7 @@
                                     </div>
                                     <div class="row topMargin">
                                         <div class="col-lg-6">
-                                            <span style="font-family: Verdana">Grade/Percentage Obtained<span style="color: #ff3333"></span> </span>
+                                            <span style="font-family: Verdana">Grade/Percentage Obtained<span style="color: #ff3333">*</span>&nbsp;<span style="color: #ff3333"></span> </span>
                                             <br />
                                             <asp:TextBox runat="server" type="text" onkeypress="return allowNumAlpha(event);" onblur="OnBlur(this);" name="txt_pg_grade" ID="txt_pg_grade" class="uppercase form-control" placeholder="Grade Obtained" TabIndex="66" MaxLength="3"></asp:TextBox>
                                         </div>

@@ -947,7 +947,7 @@ public partial class FY_Education_Detail : System.Web.UI.Page
             err.InnerText = "Select Board";
             //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Select Board');", true);
         }
-        else if (ddl10board.Visible && txt10board.Text.Trim() == "")
+        else if (div10board.Visible && txt10board.Text.Trim() == "")
         {
             err.Visible = true;
             err.InnerText = "Enter Board Name";
@@ -1070,7 +1070,7 @@ public partial class FY_Education_Detail : System.Web.UI.Page
             err12.InnerText = "Select Board";
             //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Select Board');", true);
         }
-        else if (ddl12board.Visible && txt12board.Text.Trim() == "")
+        else if (div12board.Visible && txt12board.Text.Trim() == "")
         {
             err.Visible = true;
             err.InnerText = "Enter Board Name";
