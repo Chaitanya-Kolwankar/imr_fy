@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Online Admission</title>
+    <title>RGCMS Online Admission</title>
     <link href="<%= ResolveUrl("~/images/mu.png") %>" rel="icon" />
     <link href="<%= ResolveUrl("~/images/mu.png") %>" rel="icon" />
 
@@ -252,7 +252,7 @@
 
             <div class="text-center mb-4 institute-header" style="margin-top: 40px">
                 <img src="images/RGCMS.png" height="100" alt="Mu Logo" />
-                <h4 class="text-dark" style="color: #ccc; font-size: x-large">Institute of Management and Research</h4>
+                <h4 class="text-dark" style="color: #ccc; font-size: x-large">Rajeev Gandhi College of Management Studies</h4>
                 <h4 class="text-secondary" style="color: #ccc; font-size: x-large">Online Admission</h4>
             </div>
 

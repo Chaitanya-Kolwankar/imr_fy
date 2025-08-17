@@ -2,7 +2,7 @@
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Online Admission</title>
+<title>RGCMS Online Admission</title>
 <link href="<%= ResolveUrl("~/images/mu.png") %>" rel="icon" />
 <link href="<%= ResolveUrl("~/images/mu.png") %>" rel="icon" />
 <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -52,7 +52,7 @@
     <div class="container vh-100 d-flex flex-column justify-content-center align-items-center" style="margin-top: 110px">
         <div class="text-center mb-4 institute-header">
             <img src="images/RGCMS.png" height="100" alt="Mu Logo">
-            <h4 class="text-dark" style="color: #ccc; font-size: x-large">Institute of Management and Research</h4>
+            <h4 class="text-dark" style="color: #ccc; font-size: x-large">Rajeev Gandhi College of Management Studies</h4>
             <h4 class="text-secondary" style="color: #ccc; font-size: x-large">Applicant Portal</h4>
         </div>
 
