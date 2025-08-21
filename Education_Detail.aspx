@@ -732,6 +732,7 @@
                                             <span style="font-family: Verdana">Experience</span>
                                             <asp:DropDownList ID="ddl_Experience" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddl_Experience_SelectedIndexChanged" AutoPostBack="true">
                                                 <asp:ListItem Text="--Select--" Value=""></asp:ListItem>
+                                                <asp:ListItem Text="0" Value="0"></asp:ListItem>
                                                 <asp:ListItem Text="1" Value="1"></asp:ListItem>
                                                 <asp:ListItem Text="2" Value="2"></asp:ListItem>
                                                 <asp:ListItem Text="3" Value="3"></asp:ListItem>

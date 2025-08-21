@@ -52,9 +52,9 @@
             border-radius: 15px;
         }
 
-        .well{
-                 margin-bottom:0;
-             }
+        .well {
+            margin-bottom: 0;
+        }
     </style>
 
 
@@ -185,7 +185,8 @@
                                     </div>
                                     <div class="col-lg-6" style="color: red">
                                         <br />
-                                        Please attach your Caste Certificate with your printed form and specify the Certificate No.</div>
+                                        Please attach your Caste Certificate with your printed form and specify the Certificate No.
+                                    </div>
                                 </div>
                             </div>
                             <%-- </div>--%>
@@ -314,194 +315,9 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="panel panel-default topMargin">
                         <div class="panel-body">
-                            <div class="row" id="castdiv" runat="server" visible="false">
-                                <div class="col-lg-6">
-                                    <span style="font-family: Verdana;">Caste Validity Certificate No.<span style="COLOR: #ff3333">*</span></span>
-                                    <br />
-                                    <asp:TextBox runat="server" type="text" name="Validity" ID="txtvalidity" class="form-control" placeholder="Validity No. *" required="true"></asp:TextBox>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-inline">
-                                        <span style="font-family: Verdana;">Caste Validity<span style="COLOR: #ff3333">*</span></span>
-                                        <br />
-                                        <asp:DropDownList onblur="OnBlur(this);" ID="ddmonth" onfocus="OnFocus(this);" CssClass="form-control" TabIndex="11" runat="server" OnSelectedIndexChanged="ddmonth_SelectedIndexChanged" AutoPostBack="true">
-                                            <asp:ListItem>Month</asp:ListItem>
-                                            <asp:ListItem Value="01">Jan</asp:ListItem>
-                                            <asp:ListItem Value="02">Feb</asp:ListItem>
-                                            <asp:ListItem Value="03">Mar</asp:ListItem>
-                                            <asp:ListItem Value="04">Apr</asp:ListItem>
-                                            <asp:ListItem Value="05">May</asp:ListItem>
-                                            <asp:ListItem Value="06">Jun</asp:ListItem>
-                                            <asp:ListItem Value="07">Jul</asp:ListItem>
-                                            <asp:ListItem Value="08">Aug</asp:ListItem>
-                                            <asp:ListItem Value="09">Sept</asp:ListItem>
-                                            <asp:ListItem Value="10">Oct</asp:ListItem>
-                                            <asp:ListItem Value="11">Nov</asp:ListItem>
-                                            <asp:ListItem Value="12">Dec</asp:ListItem>
-                                        </asp:DropDownList>
-                                        <asp:DropDownList onblur="OnBlur(this);" ID="dddate" onfocus="OnFocus(this);" CssClass="form-control" TabIndex="10" runat="server">
-                                            <asp:ListItem>Day</asp:ListItem>
-                                            <asp:ListItem>01</asp:ListItem>
-                                            <asp:ListItem>02</asp:ListItem>
-                                            <asp:ListItem>03</asp:ListItem>
-                                            <asp:ListItem>04</asp:ListItem>
-                                            <asp:ListItem>05</asp:ListItem>
-                                            <asp:ListItem>06</asp:ListItem>
-                                            <asp:ListItem>07</asp:ListItem>
-                                            <asp:ListItem>08</asp:ListItem>
-                                            <asp:ListItem>09</asp:ListItem>
-                                            <asp:ListItem>10</asp:ListItem>
-                                            <asp:ListItem>11</asp:ListItem>
-                                            <asp:ListItem>12</asp:ListItem>
-                                            <asp:ListItem>13</asp:ListItem>
-                                            <asp:ListItem>14</asp:ListItem>
-                                            <asp:ListItem>15</asp:ListItem>
-                                            <asp:ListItem>16</asp:ListItem>
-                                            <asp:ListItem>17</asp:ListItem>
-                                            <asp:ListItem>18</asp:ListItem>
-                                            <asp:ListItem>19</asp:ListItem>
-                                            <asp:ListItem>20</asp:ListItem>
-                                            <asp:ListItem>21</asp:ListItem>
-                                            <asp:ListItem>22</asp:ListItem>
-                                            <asp:ListItem>23</asp:ListItem>
-                                            <asp:ListItem>24</asp:ListItem>
-                                            <asp:ListItem>25</asp:ListItem>
-                                            <asp:ListItem>26</asp:ListItem>
-                                            <asp:ListItem>27</asp:ListItem>
-                                            <asp:ListItem>28</asp:ListItem>
-                                            <asp:ListItem>29</asp:ListItem>
-                                            <asp:ListItem>30</asp:ListItem>
-                                            <asp:ListItem>31</asp:ListItem>
-                                        </asp:DropDownList>
-                                        <asp:DropDownList onblur="OnBlur(this);" ID="ddyear" onfocus="OnFocus(this);" CssClass="form-control" TabIndex="12" runat="server">
-                                            <asp:ListItem>Year</asp:ListItem>
-                                            <asp:ListItem>2025</asp:ListItem>
-                                            <asp:ListItem>2024</asp:ListItem>
-                                            <asp:ListItem>2023</asp:ListItem>
-                                            <asp:ListItem>2022</asp:ListItem>
-                                            <asp:ListItem>2021</asp:ListItem>
-                                            <asp:ListItem>2020</asp:ListItem>
-                                            <asp:ListItem>2019</asp:ListItem>
-                                            <asp:ListItem>2018</asp:ListItem>
-                                            <asp:ListItem>2017</asp:ListItem>
-                                            <asp:ListItem>2016</asp:ListItem>
-                                            <asp:ListItem>2015</asp:ListItem>
-                                            <asp:ListItem>2014</asp:ListItem>
-                                            <asp:ListItem>2013</asp:ListItem>
-                                            <asp:ListItem>2012</asp:ListItem>
-                                            <asp:ListItem>2011</asp:ListItem>
-                                            <asp:ListItem>2010</asp:ListItem>
-                                            <asp:ListItem>2009</asp:ListItem>
-                                            <asp:ListItem>2008</asp:ListItem>
-                                            <asp:ListItem>2007</asp:ListItem>
-                                            <asp:ListItem>2006</asp:ListItem>
-                                            <asp:ListItem>2005</asp:ListItem>
-                                            <asp:ListItem>2004</asp:ListItem>
-                                            <asp:ListItem>2003</asp:ListItem>
-                                            <asp:ListItem>2002</asp:ListItem>
-                                            <asp:ListItem>2001</asp:ListItem>
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row" id="incomediv" runat="server" visible="false">
-                                <div class="col-lg-6">
-                                    <span style="font-family: Verdana;">Income Certificate No.<span style="COLOR: #ff3333">*</span></span>
-                                    <br />
-                                    <asp:TextBox runat="server" type="text" name="Validity" ID="txtincert" class="form-control" placeholder="Income Certificate No. *" required="true" oninput="blockInvalidChars(event)"></asp:TextBox>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-inline">
-                                        <span style="font-family: Verdana;">Income Certificate Date<span style="COLOR: #ff3333">*</span></span>
-                                        <br />
-                                        <asp:DropDownList onblur="OnBlur(this);" ID="dincmonth" onfocus="OnFocus(this);" CssClass="form-control" TabIndex="11" runat="server" OnSelectedIndexChanged="dincmonth_SelectedIndexChanged" AutoPostBack="true">
-                                            <asp:ListItem>Month</asp:ListItem>
-                                            <asp:ListItem Value="01">Jan</asp:ListItem>
-                                            <asp:ListItem Value="02">Feb</asp:ListItem>
-                                            <asp:ListItem Value="03">Mar</asp:ListItem>
-                                            <asp:ListItem Value="04">Apr</asp:ListItem>
-                                            <asp:ListItem Value="05">May</asp:ListItem>
-                                            <asp:ListItem Value="06">Jun</asp:ListItem>
-                                            <asp:ListItem Value="07">Jul</asp:ListItem>
-                                            <asp:ListItem Value="08">Aug</asp:ListItem>
-                                            <asp:ListItem Value="09">Sept</asp:ListItem>
-                                            <asp:ListItem Value="10">Oct</asp:ListItem>
-                                            <asp:ListItem Value="11">Nov</asp:ListItem>
-                                            <asp:ListItem Value="12">Dec</asp:ListItem>
-                                        </asp:DropDownList>
-                                        <asp:DropDownList onblur="OnBlur(this);" ID="dincdate" onfocus="OnFocus(this);" CssClass="form-control" TabIndex="10" runat="server">
-                                            <asp:ListItem>Day</asp:ListItem>
-                                            <asp:ListItem>01</asp:ListItem>
-                                            <asp:ListItem>02</asp:ListItem>
-                                            <asp:ListItem>03</asp:ListItem>
-                                            <asp:ListItem>04</asp:ListItem>
-                                            <asp:ListItem>05</asp:ListItem>
-                                            <asp:ListItem>06</asp:ListItem>
-                                            <asp:ListItem>07</asp:ListItem>
-                                            <asp:ListItem>08</asp:ListItem>
-                                            <asp:ListItem>09</asp:ListItem>
-                                            <asp:ListItem>10</asp:ListItem>
-                                            <asp:ListItem>11</asp:ListItem>
-                                            <asp:ListItem>12</asp:ListItem>
-                                            <asp:ListItem>13</asp:ListItem>
-                                            <asp:ListItem>14</asp:ListItem>
-                                            <asp:ListItem>15</asp:ListItem>
-                                            <asp:ListItem>16</asp:ListItem>
-                                            <asp:ListItem>17</asp:ListItem>
-                                            <asp:ListItem>18</asp:ListItem>
-                                            <asp:ListItem>19</asp:ListItem>
-                                            <asp:ListItem>20</asp:ListItem>
-                                            <asp:ListItem>21</asp:ListItem>
-                                            <asp:ListItem>22</asp:ListItem>
-                                            <asp:ListItem>23</asp:ListItem>
-                                            <asp:ListItem>24</asp:ListItem>
-                                            <asp:ListItem>25</asp:ListItem>
-                                            <asp:ListItem>26</asp:ListItem>
-                                            <asp:ListItem>27</asp:ListItem>
-                                            <asp:ListItem>28</asp:ListItem>
-                                            <asp:ListItem>29</asp:ListItem>
-                                            <asp:ListItem>30</asp:ListItem>
-                                            <asp:ListItem>31</asp:ListItem>
-                                        </asp:DropDownList>
-                                        <asp:DropDownList onblur="OnBlur(this);" ID="dincyear" onfocus="OnFocus(this);" CssClass="form-control" TabIndex="12" runat="server">
-                                            <asp:ListItem>Year</asp:ListItem>
-                                            <asp:ListItem>2025</asp:ListItem>
-                                            <asp:ListItem>2024</asp:ListItem>
-                                            <asp:ListItem>2023</asp:ListItem>
-                                            <asp:ListItem>2022</asp:ListItem>
-                                            <asp:ListItem>2021</asp:ListItem>
-                                            <asp:ListItem>2020</asp:ListItem>
-                                            <asp:ListItem>2019</asp:ListItem>
-                                            <asp:ListItem>2018</asp:ListItem>
-                                            <asp:ListItem>2017</asp:ListItem>
-                                            <asp:ListItem>2016</asp:ListItem>
-                                            <asp:ListItem>2015</asp:ListItem>
-                                            <asp:ListItem>2014</asp:ListItem>
-                                            <asp:ListItem>2013</asp:ListItem>
-                                            <asp:ListItem>2012</asp:ListItem>
-                                            <asp:ListItem>2011</asp:ListItem>
-                                            <asp:ListItem>2010</asp:ListItem>
-                                            <asp:ListItem>2009</asp:ListItem>
-                                            <asp:ListItem>2008</asp:ListItem>
-                                            <asp:ListItem>2007</asp:ListItem>
-                                            <asp:ListItem>2006</asp:ListItem>
-                                            <asp:ListItem>2005</asp:ListItem>
-                                            <asp:ListItem>2004</asp:ListItem>
-                                            <asp:ListItem>2003</asp:ListItem>
-                                            <asp:ListItem>2002</asp:ListItem>
-                                            <asp:ListItem>2001</asp:ListItem>
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default topMargin">
-                        <div class="panel-body">
-                             <div class="row">
+                            <div class="row">
                                 <div class="col-lg-6">
                                     <span style="font-family: Verdana">Aadhar No.: <span style="color: #ff3333">*</span>&nbsp;</span>
                                     <asp:TextBox onblur="OnBlur(this);" ID="txtaadhar" onfocus="OnFocus(this);" TabIndex="17" onkeypress="CheckNumeric(event);" runat="server" Font-Names="Verdana" ToolTip="Aadhar No." CssClass="form-control" MaxLength="12"></asp:TextBox>

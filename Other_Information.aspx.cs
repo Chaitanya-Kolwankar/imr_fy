@@ -262,47 +262,24 @@ public partial class FY_Other_Information : System.Web.UI.Page
         {
             ddlCategory.SelectedIndex = 11;
             Session["category"] = "EBC";
-            incomediv.Visible = true;
-            dincdate.SelectedIndex = 0;
-            dincmonth.SelectedIndex = 0;
-            dincyear.SelectedIndex = 0;
-            txtincert.Text = "";
         }
 
         if (ds.Tables[0].Rows[0]["Category"].ToString() == "SEBC")
         {
             ddlCategory.SelectedIndex = 12;
             Session["category"] = "SEBC";
-            incomediv.Visible = true;
-            dincdate.SelectedIndex = 0;
-            dincmonth.SelectedIndex = 0;
-            dincyear.SelectedIndex = 0;
-            txtincert.Text = "";
 
         }
         if (ds.Tables[0].Rows[0]["Category"].ToString() == "EWS")
         {
             ddlCategory.SelectedIndex = 13;
             Session["category"] = "EWS";
-            incomediv.Visible = true;
-            dincdate.SelectedIndex = 0;
-            dincmonth.SelectedIndex = 0;
-            dincyear.SelectedIndex = 0;
-            txtincert.Text = "";
         }
 
         if (ds.Tables[0].Rows[0]["Category"].ToString() != "OPEN" && ds.Tables[0].Rows[0]["Category"].ToString() != "EBC")
         {
-            castdiv.Visible = true;
-            incomediv.Visible = true;
-            dincdate.SelectedIndex = 0;
-            dincmonth.SelectedIndex = 0;
-            dincyear.SelectedIndex = 0;
-            dddate.SelectedIndex = 0;
-            ddmonth.SelectedIndex = 0;
-            ddyear.SelectedIndex = 0;
-            txtvalidity.Text = "";
-            txtincert.Text = "";
+            certificate.Visible = true;
+            txtCertificateno.Visible = true;
         }
 
         if (ds.Tables[0].Rows[0]["Remark"].ToString() != "")
@@ -325,90 +302,9 @@ public partial class FY_Other_Information : System.Web.UI.Page
 
         if (ds.Tables[0].Rows[0]["Certificate_No"].ToString().ToUpper() != string.Empty)
         {
-            String[] arrcert = new String[5];
-            if (ds.Tables[0].Rows[0]["Certificate_No"].ToString().Contains("|"))
-            {
-                arrcert = Convert.ToString(ds.Tables[0].Rows[0]["Certificate_No"]).Split('|');
-                txtCertificateno.Text = arrcert[0].ToString();
-                txtCertificateno.Visible = true;
-                certificate.Visible = true;
-
-                if (arrcert.Length > 3)
-                {
-                    castdiv.Visible = true;
-                    incomediv.Visible = true;
-                    if (!string.IsNullOrEmpty(arrcert[2].ToString()))
-                    {
-                        setcastdd(arrcert[2].ToString());
-                    }
-                    else
-                    {
-                        dddate.SelectedIndex = 0;
-                        ddmonth.SelectedIndex = 0;
-                        ddyear.SelectedIndex = 0;
-                    }
-
-                    if (!string.IsNullOrEmpty(arrcert[4].ToString()))
-                    {
-                        setincomedd(arrcert[4].ToString());
-                    }
-                    else
-                    {
-                        dincdate.SelectedIndex = 0;
-                        dincmonth.SelectedIndex = 0;
-                        dincyear.SelectedIndex = 0;
-                    }
-
-                    if (arrcert[1].ToString() != "")
-                    {
-                        txtvalidity.Text = arrcert[1].ToString();
-                    }
-                    else
-                    {
-                        txtvalidity.Text = "";
-                    }
-
-                    if (arrcert[3].ToString() != "")
-                    {
-                        txtincert.Text = arrcert[3].ToString();
-                    }
-                    else
-                    {
-                        txtincert.Text = "";
-                    }
-                }
-                else
-                {
-                    castdiv.Visible = false;
-                    incomediv.Visible = true;
-                    if (!string.IsNullOrEmpty(arrcert[2].ToString()))
-                    {
-                        setincomedd(arrcert[2].ToString());
-                    }
-                    else
-                    {
-                        dincdate.SelectedIndex = 0;
-                        dincmonth.SelectedIndex = 0;
-                        dincyear.SelectedIndex = 0;
-                    }
-
-                    if (arrcert[1].ToString() != "")
-                    {
-                        txtincert.Text = arrcert[1].ToString();
-                    }
-                    else
-                    {
-                        txtincert.Text = "";
-                    }
-                }
-            }
-            else
-            {
-                txtCertificateno.Text = ds.Tables[0].Rows[0]["Certificate_No"].ToString();
-                txtCertificateno.Visible = true;
-                //lblCertificateNo.Visible = true;
-                certificate.Visible = true;
-            }
+            txtCertificateno.Text = ds.Tables[0].Rows[0]["Certificate_No"].ToString();
+            certificate.Visible = true;
+            txtCertificateno.Visible = true;
         }
 
         DataSet state_board_name = cls.fill_dataset("select  child from dbo.State_category_details where Main = 'Reserved Category' and parent = '" + ddlCategory.Text.ToString().Trim() + "'");
@@ -473,59 +369,6 @@ public partial class FY_Other_Information : System.Web.UI.Page
         txtNonEarning.Text = checkNull("NonEarning");
         txtTotal.Text = calc_total(txtEarning.Text, txtNonEarning.Text);
         txtIncome.Text = checkNull("Annual_Income");
-    }
-
-    public void setcastdd(string dob)
-    {
-        string[] arr;
-        arr = dob.Split('-');
-
-        if (arr[1].ToString().Contains("Day") || arr[1].ToString().Contains("Month") || arr[1].ToString().Contains("Year"))
-        {
-            ddmonth.SelectedIndex = 0;
-            ddyear.SelectedIndex = 0;
-            dddate.SelectedIndex = 0;
-        }
-        else
-        {
-            dddate.SelectedIndex = Convert.ToInt32(arr[0].Trim().ToString());
-            if (arr[1].Trim().ToString().Length <= 1)
-            {
-                ddmonth.Text = "0" + arr[1].Trim().ToString();
-            }
-            else
-            {
-                ddmonth.SelectedValue = arr[1].Trim().ToString();
-            }
-            ddyear.SelectedIndex = ddyear.Items.IndexOf(new ListItem(arr[2].Trim().ToString()));
-        }
-    }
-
-    public void setincomedd(string dob)
-    {
-        string[] arr;
-        arr = dob.Split('-');
-
-        if (arr[1].ToString().Contains("Day") || arr[1].ToString().Contains("Month") || arr[1].ToString().Contains("Year"))
-        {
-            dincdate.SelectedIndex = 0;
-            dincmonth.SelectedIndex = 0;
-            dincyear.SelectedIndex = 0;
-        }
-        else
-        {
-            dincdate.SelectedIndex = Convert.ToInt32(arr[0].Trim().ToString());
-            if (arr[1].Trim().ToString().Length <= 1)
-            {
-                dincmonth.Text = "0" + arr[1].Trim().ToString();
-            }
-            else
-            {
-                dincmonth.SelectedValue = arr[1].Trim().ToString();
-            }
-            dincyear.SelectedIndex = ddyear.Items.IndexOf(new ListItem(arr[2].Trim().ToString()));
-        }
-
     }
 
 
@@ -605,7 +448,7 @@ public partial class FY_Other_Information : System.Web.UI.Page
         {
             if (ddlCast.SelectedIndex > 0 || ddlCast.SelectedItem.Text != "--Select--")
             {
-                if (check_radio() == true)
+                if (check_radio() || (!check_radio()))
                 {
                     string UpdateQuery = string.Empty;
                     string specialCat = string.Empty;
@@ -640,34 +483,16 @@ public partial class FY_Other_Information : System.Web.UI.Page
                     UpdateQuery = UpdateQuery + " Caste='" + caste + "', ";
 
                     bool chkflag = false;
-                    string certificatedt = "";
                     if (ddlCategory.SelectedItem.Text != "OPEN")
                     {
                         if (ddlCategory.SelectedItem.Text == "EBC" || ddlCategory.SelectedItem.Text == "SEBC" || ddlCategory.SelectedItem.Text == "EWS")
                         {
-                            if (txtincert.Text == "" || dincdate.SelectedIndex == 0 || dincmonth.SelectedIndex == 0 || dincyear.SelectedIndex == 0)
-                            {
-                                chkflag = true;
-                            }
-                            else
-                            {
-                                chkflag = false;
-                                certificatedt = txtincert.Text + '|' + dincdate.Text.ToString() + '-' + dincmonth.Text.ToString() + '-' + dincyear.Text.ToString();
-                            }
-                            UpdateQuery = UpdateQuery + "Certificate_No='" + txtCertificateno.Text + "'+'|'+'" + certificatedt + "',";
+                            UpdateQuery = UpdateQuery + "Certificate_No='" + txtCertificateno.Text + "',";
                         }
                         else
                         {
-                            if (txtvalidity.Text == "" || ddmonth.SelectedIndex == 0 || ddyear.SelectedIndex == 0 || dddate.SelectedIndex == 0 || dincdate.SelectedIndex == 0 || dincmonth.SelectedIndex == 0 || dincyear.SelectedIndex == 0)
-                            {
-                                chkflag = true;
-                            }
-                            else
-                            {
-                                chkflag = false;
-                                certificatedt = txtvalidity.Text + '|' + dddate.Text.ToString() + '-' + ddmonth.Text.ToString() + '-' + ddyear.Text.ToString() + '|' + txtincert.Text + '|' + dincdate.Text.ToString() + '-' + dincmonth.Text.ToString() + '-' + dincyear.Text.ToString();
-                            }
-                            UpdateQuery = UpdateQuery + "Certificate_No='" + txtCertificateno.Text + "'+'|'+'" + certificatedt + "',";
+                           
+                            UpdateQuery = UpdateQuery + "Certificate_No='" + txtCertificateno.Text + "',";
                         }
                     }
 
@@ -781,7 +606,7 @@ public partial class FY_Other_Information : System.Web.UI.Page
         }
         else
         {
-            if (check_radio() == true)
+            if (check_radio() || (!check_radio()))
             {
                 string UpdateQuery = string.Empty;
                 string specialCat = string.Empty;
@@ -934,16 +759,6 @@ public partial class FY_Other_Information : System.Web.UI.Page
                 ddlCast.SelectedIndex = 0;
             }
 
-            castdiv.Visible = false;
-            incomediv.Visible = false;
-            txtincert.Text = "";
-            dincdate.SelectedIndex = 0;
-            dincmonth.SelectedIndex = 0;
-            dincyear.SelectedIndex = 0;
-            txtvalidity.Text = "";
-            ddmonth.SelectedIndex = 0;
-            ddyear.SelectedIndex = 0;
-            dddate.SelectedIndex = 0;
 
             certificate.Visible = false;
             //lblCertificateNo.Visible = false ;
@@ -953,8 +768,6 @@ public partial class FY_Other_Information : System.Web.UI.Page
         {
             txtCertificateno.Visible = false;
             ddlCast.Enabled = false;
-            castdiv.Visible = false;
-            incomediv.Visible = false;
         }
         else
         {
@@ -962,13 +775,9 @@ public partial class FY_Other_Information : System.Web.UI.Page
             //lblCertificateNo.Visible = true;
             if (ddlCategory.SelectedItem.Text == "EBC" || ddlCategory.SelectedItem.Text == "SEBC" || ddlCategory.SelectedItem.Text == "EWS")
             {
-                incomediv.Visible = true;
-                castdiv.Visible = false;
             }
             else
             {
-                incomediv.Visible = true;
-                castdiv.Visible = true;
             }
             txtCertificateno.Text = string.Empty;
             txtCertificateno.Visible = true;
@@ -1022,64 +831,6 @@ public partial class FY_Other_Information : System.Web.UI.Page
             {
                 errorMessage.InnerText = "Please enter numeric values";
                 errorMessage.Visible = true;
-            }
-        }
-    }
-
-    protected void ddmonth_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (ddmonth.Text == "02" || ddmonth.Text == "04" || ddmonth.Text == "06" || ddmonth.Text == "09" || ddmonth.Text == "11")
-        {
-            if (ddmonth.Text == "Feb")
-            {
-                dddate.Items.Remove(dddate.Items.FindByText("31"));
-                dddate.Items.Remove(dddate.Items.FindByText("30"));
-            }
-            else
-            {
-                dddate.Items.Remove(dddate.Items.FindByText("31"));
-            }
-        }
-        else
-        {
-            ListItem itemne = dddate.Items.FindByText("30");
-            if (itemne == null)
-            {
-                dddate.Items.Add(new ListItem("30"));
-            }
-            ListItem item = dddate.Items.FindByText("31");
-            if (item == null)
-            {
-                dddate.Items.Add(new ListItem("31"));
-            }
-        }
-    }
-
-    protected void dincmonth_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (dincmonth.Text == "02" || dincmonth.Text == "04" || dincmonth.Text == "06" || dincmonth.Text == "09" || dincmonth.Text == "11")
-        {
-            if (dincmonth.Text == "Feb")
-            {
-                dincdate.Items.Remove(dincdate.Items.FindByText("31"));
-                dincdate.Items.Remove(dincdate.Items.FindByText("30"));
-            }
-            else
-            {
-                dincdate.Items.Remove(dincdate.Items.FindByText("31"));
-            }
-        }
-        else
-        {
-            ListItem itemne = dincdate.Items.FindByText("30");
-            if (itemne == null)
-            {
-                dincdate.Items.Add(new ListItem("30"));
-            }
-            ListItem item = dincdate.Items.FindByText("31");
-            if (item == null)
-            {
-                dincdate.Items.Add(new ListItem("31"));
             }
         }
     }
