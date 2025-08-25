@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Data;
-using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 
 
 public partial class FY_Other_Information : System.Web.UI.Page
@@ -170,21 +164,6 @@ public partial class FY_Other_Information : System.Web.UI.Page
             ddlCast.Enabled = false;
         }
 
-
-        if (ds.Tables[0].Rows[0]["Other_criteria"].ToString() != "")
-        {
-            specialcategory.SelectedItem.Text = ds.Tables[0].Rows[0]["Other_criteria"].ToString();
-
-        }
-        if (ds.Tables[0].Rows[0]["Phy_handicap_Description"].ToString() != "")
-        {
-            ddhandicap.SelectedItem.Text = ds.Tables[0].Rows[0]["Phy_handicap_Description"].ToString();
-        }
-        if (ds.Tables[0].Rows[0]["is_NSS_NCC"].ToString() != "")
-        {
-            ddlNcc.SelectedItem.Text = ds.Tables[0].Rows[0]["is_NSS_NCC"].ToString();
-        }
-
     }
 
     public void fill_data()
@@ -282,24 +261,6 @@ public partial class FY_Other_Information : System.Web.UI.Page
             txtCertificateno.Visible = true;
         }
 
-        if (ds.Tables[0].Rows[0]["Remark"].ToString() != "")
-        {
-            txtaadhar.Text = ds.Tables[0].Rows[0]["Remark"].ToString();
-        }
-        else
-        {
-            txtaadhar.Text = "";
-        }
-
-        if (ds.Tables[0].Rows[0]["DTE"].ToString() != "")
-        {
-            txtdteid.Text = ds.Tables[0].Rows[0]["DTE"].ToString();
-        }
-        else
-        {
-            txtdteid.Text = "";
-        }
-
         if (ds.Tables[0].Rows[0]["Certificate_No"].ToString().ToUpper() != string.Empty)
         {
             txtCertificateno.Text = ds.Tables[0].Rows[0]["Certificate_No"].ToString();
@@ -329,46 +290,6 @@ public partial class FY_Other_Information : System.Web.UI.Page
             ddlCast.SelectedItem.Text = ds.Tables[0].Rows[0]["Caste"].ToString();
             ddlCast.Enabled = false;
         }
-
-
-        if (ds.Tables[0].Rows[0]["Other_criteria"].ToString() != "")
-        {
-            specialcategory.SelectedItem.Text = ds.Tables[0].Rows[0]["Other_criteria"].ToString();
-
-        }
-        if (ds.Tables[0].Rows[0]["Phy_handicap_Description"].ToString() != "")
-        {
-            ddhandicap.SelectedItem.Text = ds.Tables[0].Rows[0]["Phy_handicap_Description"].ToString();
-        }
-        if (ds.Tables[0].Rows[0]["is_NSS_NCC"].ToString() != "")
-        {
-            ddlNcc.SelectedItem.Text = ds.Tables[0].Rows[0]["is_NSS_NCC"].ToString();
-        }
-
-
-        if (ds.Tables[0].Rows[0]["is_Scholarship"].ToString().ToUpper() == "TRUE")
-        {
-            rbtnNo_isScholorship.Checked = true;
-        }
-        else
-        {
-            rbtnYes_isScholorship.Checked = true;
-        }
-
-        if (checkNull("Extra_Curricular_Activities") == "Yes")
-        {
-            rbtYesCuriculum.Checked = true;
-
-        }
-        else
-        {
-            rbtNoCuricullum.Checked = true;
-
-        }
-        txtEarning.Text = checkNull("Earning");
-        txtNonEarning.Text = checkNull("NonEarning");
-        txtTotal.Text = calc_total(txtEarning.Text, txtNonEarning.Text);
-        txtIncome.Text = checkNull("Annual_Income");
     }
 
 
@@ -457,17 +378,7 @@ public partial class FY_Other_Information : System.Web.UI.Page
                     Session["category"] = ddlCategory.SelectedItem.Text.ToString().Trim().ToUpper();
                     UpdateQuery = "Update d_adm_applicant set Category='" + ddlCategory.SelectedItem.Text.ToString().Trim().ToUpper() + "', ";
 
-                    string splCategory;
-                    if (specialcategory.SelectedIndex == 0)
-                    {
-                        splCategory = "NULL";
-                    }
-                    else
-                    {
-                        splCategory = specialcategory.SelectedItem.Text.Trim();
-                        // Session["branch"] = ddbloodgroup.Text.ToString().Trim();
-                    }
-                    UpdateQuery = UpdateQuery + " Other_criteria='" + splCategory + "', ";
+                    
 
                     string caste;
                     if (ddlCast.SelectedIndex == 0)
@@ -494,80 +405,6 @@ public partial class FY_Other_Information : System.Web.UI.Page
                            
                             UpdateQuery = UpdateQuery + "Certificate_No='" + txtCertificateno.Text + "',";
                         }
-                    }
-
-                    string handicap;
-                    if (ddhandicap.SelectedIndex == 0)
-                    {
-                        handicap = "NULL";
-                    }
-                    else
-                    {
-                        handicap = ddhandicap.SelectedItem.Text.Trim();
-                        // Session["branch"] = ddbloodgroup.Text.ToString().Trim();
-                    }
-                    UpdateQuery = UpdateQuery + " Phy_handicap_Description='" + handicap + "', ";
-
-
-                    if (txtIncome.Text != string.Empty)
-                    {
-                        UpdateQuery = UpdateQuery + " Annual_Income='" + txtIncome.Text.Trim().ToUpper() + "', ";
-                    }
-                    else
-                    {
-                        UpdateQuery = UpdateQuery + " Annual_Income='', ";
-                    }
-                    if (rbtYesCuriculum.Checked == true)
-                    {
-                        UpdateQuery = UpdateQuery + " Extra_Curricular_Activities='Yes', ";
-
-                    }
-                    else if (rbtNoCuricullum.Checked == false)
-                    {
-                        UpdateQuery = UpdateQuery + " Extra_Curricular_Activities='No', ";
-
-                    }
-                    else
-                    {
-                        UpdateQuery = UpdateQuery + " Extra_Curricular_Activities=null, ";
-                    }
-
-                    UpdateQuery = UpdateQuery + " is_NSS_NCC='" + ddlNcc.Text + "', ";
-
-
-
-                    if (rbtnYes_isScholorship.Checked == true)
-                    {
-                        UpdateQuery = UpdateQuery + " is_Scholarship=0, ";
-                    }
-                    else
-                    {
-                        UpdateQuery = UpdateQuery + " is_Scholarship=1, ";
-                    }
-                    UpdateQuery = UpdateQuery + " Earning=" + Convert.ToInt32(txtEarning.Text.ToString().Trim()) + ", NonEarning=" + Convert.ToInt32(txtNonEarning.Text.ToString().Trim()) + ",Remark='" + txtaadhar.Text + "'+'|'+'" + txtdteid.Text + "'  ";
-                    UpdateQuery = UpdateQuery + "";
-
-                    //if (txtaadhar.Text == "")
-                    //{
-                    //    //ErrorMessageDisplay("Please provide Aadhar No.");
-
-                    //    ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "anything", "alert('Please provide Aadhar No.');", true);
-                    //    chkflag = true;
-                    //}
-                    //else if (txtaadhar.Text.Length != 12)
-                    //{
-                    //    //ErrorMessageDisplay("Please provide 12 Digit Aadhar No.");
-
-                    //    ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "anything", "alert('Please provide 12 Digit Aadhar No.');", true);
-                    //    chkflag = true;
-                    //}
-
-                    if (txtdteid.Text == "" && chkflag == false)
-                    {
-                        //ErrorMessageDisplay("Please provide DTE Application No.");
-
-                        ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "anything", "alert('Please provide DTE Application No.');", true);
-                        chkflag = true;
                     }
 
                     bool updated = false;
@@ -615,18 +452,6 @@ public partial class FY_Other_Information : System.Web.UI.Page
                 Session["category"] = ddlCategory.SelectedItem.Text.ToString().Trim().ToUpper();
                 UpdateQuery = "Update d_adm_applicant set Category='" + ddlCategory.SelectedItem.Text.ToString().Trim().ToUpper() + "', ";
 
-                string splCategory;
-                if (specialcategory.SelectedIndex == 0)
-                {
-                    splCategory = "NULL";
-                }
-                else
-                {
-                    splCategory = specialcategory.SelectedItem.Text.Trim();
-                    // Session["branch"] = ddbloodgroup.Text.ToString().Trim();
-                }
-                UpdateQuery = UpdateQuery + " Other_criteria='" + splCategory + "', ";
-
                 string caste;
                 if (ddlCast.SelectedIndex == 0)
                 {
@@ -641,84 +466,9 @@ public partial class FY_Other_Information : System.Web.UI.Page
                 UpdateQuery = UpdateQuery + " Caste='" + caste + "', ";
 
 
-                string handicap;
-                if (ddhandicap.SelectedIndex == 0)
-                {
-                    handicap = "NULL";
-                }
-                else
-                {
-                    handicap = ddhandicap.SelectedItem.Text.Trim();
-                    // Session["branch"] = ddbloodgroup.Text.ToString().Trim();
-                }
-                UpdateQuery = UpdateQuery + " Phy_handicap_Description='" + handicap + "', ";
 
-
-
-
-
-                if (txtIncome.Text != string.Empty)
-                {
-                    UpdateQuery = UpdateQuery + " Annual_Income='" + txtIncome.Text.Trim().ToUpper() + "', ";
-                }
-                else
-                {
-                    UpdateQuery = UpdateQuery + " Annual_Income='', ";
-                }
-                if (rbtYesCuriculum.Checked == true)
-                {
-                    UpdateQuery = UpdateQuery + " Extra_Curricular_Activities='Yes', ";
-
-                }
-                else if (rbtNoCuricullum.Checked == false)
-                {
-                    UpdateQuery = UpdateQuery + " Extra_Curricular_Activities='No', ";
-
-                }
-                else
-                {
-                    UpdateQuery = UpdateQuery + " Extra_Curricular_Activities=null, ";
-                }
+               
                 bool chkflag = false;
-                UpdateQuery = UpdateQuery + " is_NSS_NCC='" + ddlNcc.Text + "', ";
-
-                //if (txtaadhar.Text == "")
-                //{
-                //    //ErrorMessageDisplay("Please provide Aadhar No.");
-
-                //    ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "anything", "alert('Please provide Aadhar No.');", true);
-                //    chkflag = true;
-                //}
-                //else if (txtaadhar.Text.Length != 12)
-                //{
-                //    //ErrorMessageDisplay("Please provide 12 Digit Aadhar No.");
-
-                //    ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "anything", "alert('Please provide 12 Digit Aadhar No.');", true);
-                //    chkflag = true;
-                //}
-
-                //if (txtdteid.Text == "")
-                //{
-                //    //ErrorMessageDisplay("Please provide DTE Application No.");
-
-                //    ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "anything", "alert('Please provide DTE Application No.');", true);
-                //    chkflag = true;
-                //}
-
-
-                if (rbtnYes_isScholorship.Checked == true)
-                {
-                    UpdateQuery = UpdateQuery + " is_Scholarship=0, ";
-                }
-                else
-                {
-                    UpdateQuery = UpdateQuery + " is_Scholarship=1, ";
-                }
-                if (txtEarning.Text.ToString().Trim() != "" && txtNonEarning.Text.ToString().Trim() !="" ) {
-                    UpdateQuery = UpdateQuery + " Earning=" + Convert.ToInt32(txtEarning.Text.ToString().Trim()) + ", NonEarning=" + Convert.ToInt32(txtNonEarning.Text.ToString().Trim()) + ",Remark='" + txtaadhar.Text + "'+'|'+'" + txtdteid.Text + "'  ";
-                    UpdateQuery = UpdateQuery + ",";
-                }
-
 
 
                 bool updated = false;
@@ -791,47 +541,6 @@ public partial class FY_Other_Information : System.Web.UI.Page
             ddlCast.DataBind();
             ddlCast.Items.Insert(0, new ListItem("-- Select --", "0"));
             ddlCast.Items.Insert(1, new ListItem("Others", "Others"));
-        }
-    }
-    protected void txtEarning_TextChanged(object sender, EventArgs e)
-    {
-        if (txtEarning.Text != "")
-        {
-            try
-            {
-                     txtTotal.Text = Convert.ToString(Convert.ToInt16(txtEarning.Text));
-                     if (txtNonEarning.Text != "")
-                     {
-                
-                           txtTotal.Text = Convert.ToString(Convert.ToInt16(txtNonEarning.Text) + Convert.ToInt16(txtEarning.Text));
-               
-                     }
-             }
-            catch (Exception ex)
-            {
-                errorMessage.InnerText = "Please enter numeric values";
-                errorMessage.Visible = true;
-            }
-        }
-    }
-    protected void txtNonEarning_TextChanged(object sender, EventArgs e)
-    {
-        if (txtNonEarning.Text != "")
-        {
-            try
-            {
-                txtTotal.Text = Convert.ToString(Convert.ToInt16(txtNonEarning.Text));
-                if (txtEarning.Text != "")
-                {                 
-                    txtTotal.Text = Convert.ToString(Convert.ToInt16(txtNonEarning.Text) + Convert.ToInt16(txtEarning.Text));
-
-                }
-            }
-            catch (Exception ex)
-            {
-                errorMessage.InnerText = "Please enter numeric values";
-                errorMessage.Visible = true;
-            }
         }
     }
 

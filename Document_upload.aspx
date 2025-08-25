@@ -1,4 +1,4 @@
-﻿    <%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Document_upload.aspx.cs" Inherits="Document_upload" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Document_upload.aspx.cs" Inherits="Document_upload" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -11,7 +11,7 @@
     </style>
 
 
-     <style>
+    <style>
         .stepwizard-step p {
             margin-top: 10px;
         }
@@ -59,9 +59,9 @@
         }
 
 
-        .well{
-                 margin-bottom:0;
-             }
+        .well {
+            margin-bottom: 0;
+        }
     </style>
 
 
@@ -89,31 +89,31 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }--%>
-            function previewImage(input) {
-        // Check if it is a special form upload
-        var isSpecialForm = document.getElementById('<%= hdn_isSpecialForm.ClientID %>').value;
-        
-        if (isSpecialForm === "true") {
-            // Do nothing because C# already handled the image
-            console.log("Special form detected: skipping previewImage");
-            return;
-        }
+        function previewImage(input) {
+            // Check if it is a special form upload
+            var isSpecialForm = document.getElementById('<%= hdn_isSpecialForm.ClientID %>').value;
 
-        if (input.files && input.files[0]) {
-            var file = input.files[0];
+            if (isSpecialForm === "true") {
+                // Do nothing because C# already handled the image
+                console.log("Special form detected: skipping previewImage");
+                return;
+            }
 
-            if (file.type.startsWith('image/')) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    var img = document.getElementById('<%= imgphoto.ClientID %>');
-            img.src = e.target.result;
+            if (input.files && input.files[0]) {
+                var file = input.files[0];
+
+                if (file.type.startsWith('image/')) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var img = document.getElementById('<%= imgphoto.ClientID %>');
+                        img.src = e.target.result;
+                    }
+                    reader.readAsDataURL(file);
+                } else {
+                    console.log("Selected file is not an image. No preview shown.");
                 }
-            reader.readAsDataURL(file);
-            } else {
-                console.log("Selected file is not an image. No preview shown.");
             }
         }
-    }
     </script>
 
 
@@ -157,7 +157,7 @@
                         <asp:ListItem>--SELECT--</asp:ListItem>
                         <asp:ListItem>STUDENT_PHOTO</asp:ListItem>
                         <asp:ListItem>STUDENT_SIGNATURE</asp:ListItem>
-                        <asp:ListItem>STUDENT_AADHARCARD</asp:ListItem>
+                        <asp:ListItem>STUDENT_AADHAARCARD</asp:ListItem>
                         <asp:ListItem>STUDENT_PAN</asp:ListItem>
                         <asp:ListItem>BANK_PASSBOOK_COPY</asp:ListItem>
                         <asp:ListItem>STUDENT_OTHER_DOCUMENT</asp:ListItem>
@@ -177,8 +177,10 @@
 
                                 <div class="alert-info">
 
-                                    <center> <span style="font-family: Verdana"><asp:Label runat="server" ID="lbldocname"></asp:Label><span runat="server" id="lblimp" >*</span>  </span>
-                                      </center>
+                                    <center>
+                                        <span style="font-family: Verdana">
+                                            <asp:Label runat="server" ID="lbldocname"></asp:Label><span runat="server" id="lblimp">*</span>  </span>
+                                    </center>
                                 </div>
 
                             </div>
@@ -186,19 +188,19 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <center>
-                                <asp:Image ID="imgphoto" runat="server" CssClass="form-control img-responsive"  ImageUrl="~/images/myprofile.png" Visible="true" ToolTip="Photo"
+                                        <asp:Image ID="imgphoto" runat="server" CssClass="form-control img-responsive" ImageUrl="~/images/myprofile.png" Visible="true" ToolTip="Photo"
                                             Height="200px" Width="200px"></asp:Image>
-                                                                        </center>
+                                    </center>
                                 </div>
                             </div>
                             <br />
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-6" style="padding:4px;">
                                     <asp:FileUpload ID="filephoto" TabIndex="1" CssClass="form-control btn-info" runat="server" accept="image/*" ToolTip="Upload Photo" onchange="previewImage(this)"></asp:FileUpload>
                                 </div>
                                 <asp:HiddenField ID="hdn_isSpecialForm" runat="server" Value="false" />
 
-                                <div class="col-lg-6">
+                                <div class="col-lg-6" style="padding:4px;">
                                     <asp:Button ID="btnuploadphoto" TabIndex="2" runat="server" OnClick="btnuploadphoto_Click" Text="Upload Photo" class="form-control btn-info"></asp:Button>
                                 </div>
                             </div>
@@ -206,6 +208,27 @@
                             <div class="row">
                                 <asp:Label ID="lblErrMsgPhoto" runat="server" CssClass="form-control" Visible="False" Text="Label" Font-Names="Verdana"></asp:Label>
                             </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="panel panel-default" id="uploade_document" runat="server">
+                        <div class="panel-heading">
+                            <span style="font-family: Verdana"><strong>Uploaded Documents</strong></span>
+                        </div>
+                        <div class="panel panel-body">
+                            <center>
+                                <div class="row">
+                                    <asp:Repeater ID="rptPhotos" runat="server" OnItemCommand="rptPhotos_ItemCommand">
+                                        <ItemTemplate>
+                                            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 text-center" style="padding:4px;">
+                                                <asp:ImageButton ID="imgPhoto" runat="server" CssClass="img-fluid img-rounded img-thumbnail" CommandName="SelectPhoto" CommandArgument='<%# Eval("PhotoId") %>' ImageUrl='<%# Eval("PhotoUrl") %>' Width="75" Height="75"/>
+                                                <br />
+                                                <asp:Label runat="server" ID="lbl_photo" Text='<%# Convert.ToString(Eval("PhotoId")).Replace("_"," ") %>'></asp:Label>
+                                            </div>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                </div>
+                            </center>
                         </div>
                     </div>
                 </div>

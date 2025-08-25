@@ -60,8 +60,7 @@ public partial class Document_upload : System.Web.UI.Page
                         string root = Request.PhysicalApplicationPath + "2025_2026_DOC/" + Session["Formno"].ToString();
                         if (Directory.Exists(root))
                         {
-                            ddl_doc.SelectedIndex = 1;
-                            ddl_doc_SelectedIndexChanged(sender, e);
+                            load_photos();
                         }
                     }
                     else
@@ -373,7 +372,7 @@ public partial class Document_upload : System.Web.UI.Page
 
 
 
-
+                            load_photos();
                             this.imgphoto.ImageUrl = ("~/2025_2026_DOC/" + Session["Formno"].ToString() + "/" + ddl_doc.SelectedItem.Text.Trim() + ".jpg").Replace("\\", "/");
 
                             ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + ddl_doc.SelectedItem.Text + " Submitted Sucessfully');", true);
@@ -638,5 +637,52 @@ public partial class Document_upload : System.Web.UI.Page
             }
         }
 
+    }
+
+    protected void rptPhotos_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+        if (e.CommandName == "SelectPhoto")
+        {
+            string photoId = e.CommandArgument.ToString();
+            ListItem li = ddl_doc.Items.FindByText(photoId);
+            if (li != null)  
+            {
+                ddl_doc.ClearSelection();  
+                li.Selected = true;        
+            }
+            ddl_doc_SelectedIndexChanged(source,e);
+        }
+    }
+
+    public void load_photos()
+    {
+        string virtualFolder = "~/2025_2026_DOC/" + Session["Formno"].ToString();
+        string root = Server.MapPath(virtualFolder);  // physical path
+
+        if (Directory.Exists(root))
+        {
+            string[] filePaths = Directory.GetFiles(root);
+            List<dynamic> files = new List<dynamic>();
+
+            foreach (string filePath in filePaths)
+            {
+                string fileName = Path.GetFileName(filePath);
+
+                files.Add(new
+                {
+                    PhotoId = Path.GetFileNameWithoutExtension(filePath),   // "student123"
+                    PhotoUrl = virtualFolder + "/" + fileName              // "~/2025_2026_DOC/Formno/student123.png"
+                });
+            }
+
+            rptPhotos.DataSource = files;
+            rptPhotos.DataBind();
+        }
+        else
+        {
+            uploade_document.Visible = false;
+            rptPhotos.DataSource = null;
+            rptPhotos.DataBind();
+        }
     }
 }

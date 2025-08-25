@@ -1,6 +1,20 @@
 ﻿using System;
 using System.Data;
+using System.Configuration;
+using System.Collections;
 using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using System.Net.Mail;
+using System.Text.RegularExpressions;
+using System.IO;
+using System.Net;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System.Data.SqlClient;
 
 public partial class Login : System.Web.UI.Page
 {
@@ -18,7 +32,7 @@ public partial class Login : System.Web.UI.Page
                 string[] ss1 = url.Split('/');
                 if (ss1[2].ToString().StartsWith("103"))
                 {
-                    Response.Redirect("login.aspx");
+                    Response.Redirect("http://imr.vivacollege.in/imr_fy/login.aspx");
                 }
                 errorMessage.Visible = false;
                 btnLogin.Attributes.Add("onclick", "return validate()");

@@ -844,17 +844,19 @@ public partial class FY_Education_Detail : System.Web.UI.Page
         //}
         else
         {
-            if (ddl_Experience.SelectedIndex > 0)
+            if (ddl_Experience.SelectedIndex > 1)
             {
                 if (txt_Designation.Text.Trim() == "")
                 {
                     errorMessage.Visible = true;
                     errorMessage.InnerText = "Enter Designation";
+                    return;
                 }
                 else if (txt_cmpn_name.Text.Trim() == "")
                 {
                     errorMessage.Visible = true;
                     errorMessage.InnerText = "Company Name";
+                    return;
                 }
             }
             // DataSet ds = ((DataSet)Session["App_data"]);
