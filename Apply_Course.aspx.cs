@@ -27,7 +27,7 @@ public partial class FY_Apply_Course : System.Web.UI.Page
                 else
                 {
                     string flag = "0";
-                    DataTable dt_chk_pay = cls.fill_datatable("select Formno from admProvFees where Formno='" + Session["Formno"].ToString() + "' and ayid='" + Session["AYID"].ToString() + "' and paid_status=1");
+                    DataTable dt_chk_pay = cls.fill_datatable("select Formno from admProvFees where Formno='" + Session["Formno"].ToString() + "' and ayid='" + Session["AYID"].ToString() + "' and paid_status=1 and del_flag=0");
                     if (dt_chk_pay.Rows.Count != 0)
                     {
                         flag = "1";
