@@ -468,6 +468,7 @@ public partial class FY_Education_Detail : System.Web.UI.Page
         ddl12board.DataTextField = "child";
         ddl12board.DataBind();
         ddl12board.Items.Insert(0, new ListItem("-- Select --", "0"));
+        ddl12board.Items.Add(new ListItem("OTHER", "OTHER"));
     }
 
     protected void ddlTYstate_SelectedIndexChanged(object sender, EventArgs e)

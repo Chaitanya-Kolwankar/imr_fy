@@ -264,6 +264,7 @@
         </ContentTemplate>
          <Triggers>
             <asp:PostBackTrigger ControlID="btn_confirm" />
+            <asp:PostBackTrigger ControlID="btnApply" />
         </Triggers>
     </asp:UpdatePanel>
 </asp:Content>
