@@ -202,7 +202,13 @@ public partial class FY_Apply_Course : System.Web.UI.Page
         }
 
         cls.DMLqueries(str);
-        dgvData.Visible = true;
+        DataSet ds = cls.fill_dataset("  select distinct adm.formno+replace(adm.group_id,'GRP','') as formno_grp,pre_faculty,s.subcourse_name,c.course_name,g.Group_title ,adm.group_id,0 [flag] from  dbo.d_adm_applicant app,  dbo.OLA_FY_adm_CourseSelection adm,dbo.m_crs_subcourse_tbl s,dbo.m_crs_course_tbl c,dbo.m_crs_subjectgroup_tbl g,m_FeeMaster as fm where app.Form_no=adm.formno and fm.group_id=(select group_id from m_crs_subjectgroup_tbl where group_id= adm.Group_id )  and app.ACDID=fm.Ayid and fm.del_flag='0' and adm.group_id=g.group_id   and c.course_id=s.course_id and g.Subcourse_id=s.subcourse_id and adm.group_id=g.group_id  and app.form_no='" + Session["Formno"].ToString() + "' and app.acdid='" + Session["AYID"].ToString() + "' and app.del_flag=0");
+        if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+        {
+            dgvData.DataSource = ds.Tables[0];
+            dgvData.DataBind();
+            dgvData.Visible = true;
+        }
 
     }
 
