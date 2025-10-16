@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -413,8 +414,12 @@ public partial class FY_Apply_Course : System.Web.UI.Page
         string mode = ConfigurationManager.AppSettings["MODE"];
         string salt = ConfigurationManager.AppSettings["SALT"];
         string paymentUrl = ConfigurationManager.AppSettings["UATPAYMENTS_URL"];
+        string vendor_code = ConfigurationManager.AppSettings["VENDOR_CODE"];
         string country = "IND";
         string currency = "INR";
+        string finalSplitJson = "{ \"vendors\": [" +
+                "{ \"vendor_code\": \"" + vendor_code + "\", \"split_amount_percentage\": \"100\" }" +
+                "] }";
 
         paymentData.Add("api_key", apiKey);
         paymentData.Add("return_url", returnUrl);
@@ -422,6 +427,7 @@ public partial class FY_Apply_Course : System.Web.UI.Page
         paymentData.Add("country", country);
         paymentData.Add("currency", currency);
         paymentData.Add("SALT", salt);
+        paymentData.Add("split_info", finalSplitJson);
 
         string[] hashVarsSeq = ConfigurationManager.AppSettings["hashSequence"].Split('|');
         StringBuilder hashStringBuilder = new StringBuilder();
@@ -477,7 +483,9 @@ public partial class FY_Apply_Course : System.Web.UI.Page
 
         foreach (System.Collections.DictionaryEntry key in data)
         {
-            strForm.Append(string.Format("<input type=\"hidden\" name=\"{0}\" value=\"{1}\">", key.Key, key.Value));
+            string value = key.Value.ToString();
+            string htmlEncodedValue = HttpUtility.HtmlEncode(value);
+            strForm.Append(string.Format("<input type=\"hidden\" name=\"{0}\" value=\"{1}\">", key.Key, htmlEncodedValue));
         }
         strForm.Append("</form>");
 
